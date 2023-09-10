@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.aditya.appstoryaditya.BuildConfig
 import com.aditya.appstoryaditya.api.ApiService
 import com.aditya.appstoryaditya.database.StoryDatabase
-import com.aditya.user.UserPreference
+import com.aditya.appstoryaditya.models.UserPreference
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.data
+package com.aditya.appstoryaditya.models
 
 import com.google.gson.annotations.SerializedName
 

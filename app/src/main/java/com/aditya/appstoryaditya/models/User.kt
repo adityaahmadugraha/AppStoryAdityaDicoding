@@ -1,4 +1,4 @@
-package com.aditya.user
+package com.aditya.appstoryaditya.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

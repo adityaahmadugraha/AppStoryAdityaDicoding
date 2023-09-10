@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.data
+package com.aditya.appstoryaditya.models
 
 import android.os.Parcelable
 import androidx.room.Entity

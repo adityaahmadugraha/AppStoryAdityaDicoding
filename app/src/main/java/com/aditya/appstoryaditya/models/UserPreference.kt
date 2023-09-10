@@ -1,11 +1,11 @@
-package com.aditya.user
+package com.aditya.appstoryaditya.models
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
-import com.aditya.appstoryaditya.api.Constant.KEY_NAME
-import com.aditya.appstoryaditya.api.Constant.KEY_TOKEN
-import com.aditya.appstoryaditya.api.Constant.KEY_USERID
+import com.aditya.appstoryaditya.util.Constant.KEY_NAME
+import com.aditya.appstoryaditya.util.Constant.KEY_TOKEN
+import com.aditya.appstoryaditya.util.Constant.KEY_USERID
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

@@ -1,4 +1,4 @@
-package com.aditya.user
+package com.aditya.appstoryaditya.util
 
 sealed class Resource<T>{
     class Loading<T> : Resource<T>()

@@ -7,12 +7,12 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.aditya.appstoryaditya.api.ApiService
-import com.aditya.appstoryaditya.data.RegisterRequest
-import com.aditya.appstoryaditya.data.ServerResponse
-import com.aditya.appstoryaditya.data.Story
+import com.aditya.appstoryaditya.models.ServerResponse
+import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.database.StoryDatabase
-import com.aditya.appstoryaditya.login.LoginRequest
-import com.aditya.user.Resource
+import com.aditya.appstoryaditya.models.LoginRequest
+import com.aditya.appstoryaditya.models.RegisterRequest
+import com.aditya.appstoryaditya.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

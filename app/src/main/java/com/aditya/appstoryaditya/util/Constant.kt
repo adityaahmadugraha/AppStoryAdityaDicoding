@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.api
+package com.aditya.appstoryaditya.util
 
 import android.content.ContentResolver
 import android.content.Context
@@ -8,7 +8,7 @@ import android.net.Uri
 import android.os.Environment
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
-import com.aditya.user.User
+import com.aditya.appstoryaditya.models.User
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream

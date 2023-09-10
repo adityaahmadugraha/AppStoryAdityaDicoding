@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya
+package com.aditya.appstoryaditya.util
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

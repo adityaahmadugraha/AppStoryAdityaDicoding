@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.splash
+package com.aditya.appstoryaditya.ui.splash
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowManager
 import com.aditya.appstoryaditya.R
-import com.aditya.appstoryaditya.login.LoginActivity
+import com.aditya.appstoryaditya.ui.login.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 class SplashActivity : AppCompatActivity() {

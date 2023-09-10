@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.login
+package com.aditya.appstoryaditya.ui.login
 
 import android.content.Context
 import android.widget.Toast
@@ -7,10 +7,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aditya.appstoryaditya.R
+import com.aditya.appstoryaditya.models.LoginRequest
+import com.aditya.appstoryaditya.models.User
+import com.aditya.appstoryaditya.models.UserPreference
 import com.aditya.appstoryaditya.repository.StoryAppRepository
-import com.aditya.user.Resource
-import com.aditya.user.User
-import com.aditya.user.UserPreference
+import com.aditya.appstoryaditya.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

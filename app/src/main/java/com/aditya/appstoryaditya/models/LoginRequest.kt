@@ -1,11 +1,8 @@
-package com.aditya.appstoryaditya.register
+package com.aditya.appstoryaditya.models
 
 import com.google.gson.annotations.SerializedName
 
-data class RegisterRequest(
-    @field:SerializedName("name")
-    val name: String,
-
+data class LoginRequest(
     @field:SerializedName("email")
     val email: String,
 

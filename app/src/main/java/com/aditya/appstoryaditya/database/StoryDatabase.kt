@@ -2,7 +2,7 @@ package com.aditya.appstoryaditya.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.aditya.appstoryaditya.data.Story
+import com.aditya.appstoryaditya.models.Story
 
 
 @Database(

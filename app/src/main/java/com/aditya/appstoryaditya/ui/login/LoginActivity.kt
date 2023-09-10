@@ -1,18 +1,20 @@
-package com.aditya.appstoryaditya.login
+package com.aditya.appstoryaditya.ui.login
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.aditya.appstoryaditya.MainActivity
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ActivityLoginBinding
-import com.aditya.appstoryaditya.register.RegisterActivity
+import com.aditya.appstoryaditya.models.LoginRequest
+import com.aditya.appstoryaditya.ui.main.MainActivity
+import com.aditya.appstoryaditya.ui.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {

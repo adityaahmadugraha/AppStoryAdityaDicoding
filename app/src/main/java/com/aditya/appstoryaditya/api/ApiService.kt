@@ -1,8 +1,8 @@
 package com.aditya.appstoryaditya.api
 
-import com.aditya.appstoryaditya.data.RegisterRequest
-import com.aditya.appstoryaditya.data.ServerResponse
-import com.aditya.appstoryaditya.login.LoginRequest
+import com.aditya.appstoryaditya.models.ServerResponse
+import com.aditya.appstoryaditya.models.LoginRequest
+import com.aditya.appstoryaditya.models.RegisterRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.Body

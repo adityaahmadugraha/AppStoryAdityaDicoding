@@ -1,6 +1,5 @@
-package com.aditya.appstoryaditya.data
+package com.aditya.appstoryaditya.models
 
-import com.aditya.user.User
 import com.google.gson.annotations.SerializedName
 
 data class ServerResponse(

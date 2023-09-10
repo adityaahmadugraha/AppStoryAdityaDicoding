@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.register
+package com.aditya.appstoryaditya.ui.register
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ActivityRegisterBinding
+import com.aditya.appstoryaditya.models.RegisterRequest
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,9 +33,9 @@ class RegisterActivity : AppCompatActivity() {
                 val password = etPassword.text.toString()
 
                 if (validateInput(nama)) {
-//                    registerUser(
-//                        RegisterRequest(nama, email, password)
-//                    )
+                    registerUser(
+                        RegisterRequest(nama, email, password)
+                    )
                 }
 
             }
@@ -57,13 +58,13 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-//    private fun registerUser(registerRequest: RegisterRequest) {
-//        viewModel.registerUser(this@RegisterActivity, registerRequest){ success ->
-//            if(success){
-//                finish()
-//            }
-//        }
-//    }
+    private fun registerUser(registerRequest: RegisterRequest) {
+        viewModel.registerUser(this@RegisterActivity, registerRequest){ success ->
+            if(success){
+                finish()
+            }
+        }
+    }
 
     private fun validateInput(nama: String): Boolean {
         binding.apply {

@@ -6,7 +6,7 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.aditya.appstoryaditya.api.ApiService
-import com.aditya.appstoryaditya.data.Story
+import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.database.RemoteKeys
 import com.aditya.appstoryaditya.database.StoryDatabase
 
