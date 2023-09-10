@@ -31,7 +31,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setView() {
         binding.apply {
-            tvNama.text = story?.name
+            tvTitle.text = story?.name
             tvDescription.text = story?.description
             Glide.with(this@DetailActivity)
                 .load(story?.photoUrl)
