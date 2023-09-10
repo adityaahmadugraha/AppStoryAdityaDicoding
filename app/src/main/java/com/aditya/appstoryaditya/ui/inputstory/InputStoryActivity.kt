@@ -66,7 +66,6 @@ class InputStoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInputStoryBinding
     private val viewModel: InputStoryViewModel by viewModels()
     private var user: User? = null
-    private var location: Location? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,13 +97,6 @@ class InputStoryActivity : AppCompatActivity() {
     }
 
 
-
-    private fun setLocationEditText(location: Location) {
-        val latLng = "${location.latitude}, ${location.longitude}"
-        this.location = location
-        binding.etLocation.setText(latLng)
-    }
-
     private fun checkPermission(permission: String): Boolean {
         return ContextCompat.checkSelfPermission(
             this,
@@ -133,8 +125,6 @@ class InputStoryActivity : AppCompatActivity() {
 
             val token = user?.tokenBearer.toString()
             val desc = description.toRequestBody("text/plain".toMediaType())
-            val lat = if(location != null) location?.latitude.toString().toRequestBody("text/plain". toMediaType()) else null
-            val lon = if(location != null) location?.longitude.toString().toRequestBody("text/plain". toMediaType()) else null
             val imageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
@@ -146,8 +136,7 @@ class InputStoryActivity : AppCompatActivity() {
                 token = token,
                 file = imageMultipart,
                 description = desc,
-                lat = lat,
-                lon = lon
+            
             ){
                 if(!it.error){
                     Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()

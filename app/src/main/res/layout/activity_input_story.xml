@@ -99,35 +99,18 @@
             app:boxCornerRadiusTopStart="16dp"
             app:layout_constraintEnd_toEndOf="@+id/il_description"
             app:layout_constraintStart_toStartOf="@+id/il_description"
-            app:layout_constraintTop_toBottomOf="@+id/il_description">
+            app:layout_constraintTop_toBottomOf="@+id/il_description"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_location"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:enabled="false"
-                android:fontFamily="@font/lato" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/ic_search_location"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:src="@drawable/ic_add_location"
-            app:layout_constraintBottom_toBottomOf="@+id/il_location"
-            app:layout_constraintStart_toEndOf="@+id/il_location"
-            app:layout_constraintTop_toTopOf="@+id/il_location" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_upload"
-            android:layout_width="0dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/lato"
             android:text="@string/upload"
             app:cornerRadius="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/il_location"
+            app:layout_constraintEnd_toEndOf="@+id/il_description"
             app:layout_constraintStart_toStartOf="@+id/il_location"
             app:layout_constraintTop_toBottomOf="@+id/il_location" />
 
