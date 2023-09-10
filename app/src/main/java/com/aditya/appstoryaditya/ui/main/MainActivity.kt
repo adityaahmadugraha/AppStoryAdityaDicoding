@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +55,10 @@ class MainActivity : AppCompatActivity() {
         setupRecyclerData()
         getStories()
         showLoading()
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = null
     }
 
     @OptIn(ExperimentalPagingApi::class)
@@ -99,15 +104,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            R.id.change_language -> {
-                startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
-            }
-
-            R.id.location -> {
-                Intent(this@MainActivity, UserLocationActivity::class.java).also {
-                    startActivity(it)
-                }
-            }
         }
         return true
     }

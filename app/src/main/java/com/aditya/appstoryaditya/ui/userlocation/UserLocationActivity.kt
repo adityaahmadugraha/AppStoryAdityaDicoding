@@ -157,32 +157,32 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.map_options, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.map_options, menu)
+//        return true
+//    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.normal_type -> {
-                mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
-                true
-            }
-            R.id.satellite_type -> {
-                mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
-                true
-            }
-            R.id.terrain_type -> {
-                mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
-                true
-            }
-            R.id.hybrid_type -> {
-                mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
-                true
-            }
-            else -> {
-                super.onOptionsItemSelected(item)
-            }
-        }
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.normal_type -> {
+//                mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+//                true
+//            }
+//            R.id.satellite_type -> {
+//                mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+//                true
+//            }
+//            R.id.terrain_type -> {
+//                mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
+//                true
+//            }
+//            R.id.hybrid_type -> {
+//                mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+//                true
+//            }
+//            else -> {
+//                super.onOptionsItemSelected(item)
+//            }
+//        }
+//    }
 }

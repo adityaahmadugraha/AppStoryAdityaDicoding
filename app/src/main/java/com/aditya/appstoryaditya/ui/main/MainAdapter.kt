@@ -7,7 +7,6 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.app.ActivityOptionsCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -60,19 +59,6 @@ class MainAdapter :
                     .placeholder(itemView.context.createProgress())
                     .error(android.R.color.darker_gray)
                     .into(imgStories)
-
-//                itemView.setOnClickListener {
-//                    Intent(context, DetailActivity::class.java).also {
-//                        it.putExtra(KEY_STORY, data)
-//
-//                        val optionsCompat: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                            itemView.context as Activity,
-//                            Pair(tvNama, context.getString(R.string.image)),
-//                            Pair(tvCreatedAt, context.getString(R.string.date))
-//                        )
-//                        context.startActivity(it, optionsCompat.toBundle())
-//                    }
-//                }
 
                 itemView.setOnClickListener {
                     val intent = Intent(context, DetailActivity::class.java)
