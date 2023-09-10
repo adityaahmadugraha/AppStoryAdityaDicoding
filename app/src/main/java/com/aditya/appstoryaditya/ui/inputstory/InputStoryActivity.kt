@@ -25,8 +25,6 @@ import com.aditya.appstoryaditya.util.Constant
 import com.aditya.appstoryaditya.util.Constant.reduceFileImage
 import com.aditya.appstoryaditya.util.Constant.tokenBearer
 import com.aditya.appstoryaditya.util.Constant.uriToFile
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -66,7 +64,6 @@ class InputStoryActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityInputStoryBinding
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val viewModel: InputStoryViewModel by viewModels()
     private var user: User? = null
     private var location: Location? = null
@@ -88,33 +85,19 @@ class InputStoryActivity : AppCompatActivity() {
             user = it
         }
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
 
         binding.apply {
             btnCamera.setOnClickListener { startTakePhoto() }
             btnGallery.setOnClickListener { startGallery() }
             btnUpload.setOnClickListener { uploadImage() }
-            icSearchLocation.setOnClickListener { getMyLastLocation() }
         }
 
         showLoading()
         clearErrorDescription()
     }
 
-    private val requestPermissionLauncher =
-        registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()
-        ) { permissions ->
-            when {
-                permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
-                    getMyLastLocation()
-                }
-                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
-                    getMyLastLocation()
-                }
-                else -> {}
-            }
-        }
+
 
     private fun setLocationEditText(location: Location) {
         val latLng = "${location.latitude}, ${location.longitude}"
@@ -129,30 +112,6 @@ class InputStoryActivity : AppCompatActivity() {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
-    private fun getMyLastLocation() {
-        if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
-            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
-        ) {
-            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-                if (location != null) {
-                    setLocationEditText(location)
-                } else {
-                    Toast.makeText(
-                        this@InputStoryActivity,
-                        R.string.location_not_found,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        } else {
-            requestPermissionLauncher.launch(
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-            )
-        }
-    }
 
     private fun clearErrorDescription() {
         binding.etDescription.doAfterTextChanged { binding.ilDescription.isErrorEnabled = false }
