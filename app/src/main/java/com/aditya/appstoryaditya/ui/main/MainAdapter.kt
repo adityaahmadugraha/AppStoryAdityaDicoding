@@ -1,10 +1,13 @@
 package com.aditya.appstoryaditya.ui.main
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.app.ActivityOptionsCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +15,8 @@ import com.aditya.appstoryaditya.util.Constant.createProgress
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ItemStoriesBinding
 import com.aditya.appstoryaditya.models.Story
+import com.aditya.appstoryaditya.ui.detailstory.DetailActivity
+import com.aditya.appstoryaditya.util.Constant.KEY_STORY
 import com.bumptech.glide.Glide
 import java.util.Random
 
@@ -56,7 +61,7 @@ class MainAdapter :
                     .error(android.R.color.darker_gray)
                     .into(imgStories)
 
-                itemView.setOnClickListener {
+//                itemView.setOnClickListener {
 //                    Intent(context, DetailActivity::class.java).also {
 //                        it.putExtra(KEY_STORY, data)
 //
@@ -67,7 +72,14 @@ class MainAdapter :
 //                        )
 //                        context.startActivity(it, optionsCompat.toBundle())
 //                    }
+//                }
+
+                itemView.setOnClickListener {
+                    val intent = Intent(context, DetailActivity::class.java)
+                    intent.putExtra(KEY_STORY, data)
+                    context.startActivity(intent)
                 }
+
             }
         }
     }

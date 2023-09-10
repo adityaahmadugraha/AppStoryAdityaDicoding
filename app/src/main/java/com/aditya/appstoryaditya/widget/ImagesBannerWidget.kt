@@ -22,9 +22,9 @@ class ImagesBannerWidget : AppWidgetProvider() {
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
             intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
 
-//            val views = RemoteViews(context.packageName, R.layout.image_banner_widget)
-//            views.setRemoteAdapter(R.id.stack_view, intent)
-//            views.setEmptyView(R.id.stack_view, R.id.empty_view)
+            val views = RemoteViews(context.packageName, R.layout.image_banner_widget)
+            views.setRemoteAdapter(R.id.stack_view, intent)
+            views.setEmptyView(R.id.stack_view, R.id.empty_view)
 
             val toastIntent = Intent(context, ImagesBannerWidget::class.java)
             toastIntent.action = TOAST_ACTION
@@ -35,8 +35,8 @@ class ImagesBannerWidget : AppWidgetProvider() {
                     PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
                 else 0
             )
-//            views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent)
-//            appWidgetManager.updateAppWidget(appWidgetId, views)
+            views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent)
+            appWidgetManager.updateAppWidget(appWidgetId, views)
         }
     }
 
