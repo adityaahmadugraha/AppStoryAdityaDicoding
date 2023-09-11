@@ -2,6 +2,7 @@ package com.aditya.appstoryaditya.ui.login
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -38,7 +39,7 @@ class LoginActivity : AppCompatActivity() {
                 val password = etPassword.text.toString()
                 val loginRequest = LoginRequest(email, password)
 
-                if(!isError){
+                if (!isError) {
                     loginUser(loginRequest)
                 }
             }
@@ -52,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
                 getString(R.string.image_description, getString(R.string.login))
 
             viewModel.getUser { user ->
-                if(user.token.isNotEmpty()){
+                if (user.token.isNotEmpty()) {
                     intentToMain()
                 }
             }
@@ -71,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser(loginRequest: LoginRequest) {
-        viewModel.loginUser(this@LoginActivity, loginRequest){ user ->
+        viewModel.loginUser(this@LoginActivity, loginRequest) { user ->
             intentToMain()
         }
     }
@@ -87,11 +88,16 @@ class LoginActivity : AppCompatActivity() {
 
     private fun playAnimation() {
         binding.apply {
-            ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_Y, -20f, 20f).apply {
+            ObjectAnimator.ofPropertyValuesHolder(
+                binding.imageView,
+                PropertyValuesHolder.ofFloat(View.SCALE_X, 0.5f, 1.0f),
+                PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.5f, 1.0f)
+            ).apply {
                 duration = 1500
                 repeatCount = ObjectAnimator.INFINITE
                 repeatMode = ObjectAnimator.REVERSE
             }.start()
+
 
             val login = ObjectAnimator.ofFloat(textView, View.ALPHA, 1f).setDuration(500)
             val emailLable = ObjectAnimator.ofFloat(textView2, View.ALPHA, 1f).setDuration(200)

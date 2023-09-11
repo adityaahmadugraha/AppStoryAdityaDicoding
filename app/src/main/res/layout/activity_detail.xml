@@ -14,11 +14,11 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/image_description"
         android:scaleType="fitXY"
+        android:transitionName="@string/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic"
-        android:transitionName="@string/image"/>
+        tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -27,37 +27,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/lato_bold"
-        tools:text="@string/name"
         android:textSize="25sp"
+        android:transitionName="@string/name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_story"
-        android:transitionName="@string/name"/>
-
-<!--    <TextView-->
-<!--        android:id="@+id/tv_created_at"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:fontFamily="@font/lato"-->
-<!--        tools:textSize="11sp"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/tv_nama"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_nama"-->
-<!--        tools:text="@string/date"-->
-<!--        android:transitionName="@string/date"/>-->
-
-<!--    <View-->
-<!--        android:id="@+id/view"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="1dp"-->
-<!--        android:layout_marginStart="24dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:layout_marginEnd="24dp"-->
-<!--        android:alpha="0"-->
-<!--        tools:alpha="1"-->
-<!--        android:background="@android:color/darker_gray"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_nama" />-->
+        tools:text="@string/name" />
 
     <TextView
         android:id="@+id/tv_description"
@@ -66,14 +40,14 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/lato"
         android:alpha="0"
-        tools:alpha="1"
+        android:fontFamily="@font/lato"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
         app:layout_constraintVertical_bias="0.0"
+        tools:alpha="1"
         tools:text="@tools:sample/lorem/random" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
