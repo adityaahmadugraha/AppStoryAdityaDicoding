@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/lato"
+            android:fontFamily="@font/opensanscondensedmedium"
             android:text="@string/camera"
             app:cornerRadius="32dp"
             android:backgroundTint="@color/button"
@@ -53,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:fontFamily="@font/lato"
+            android:fontFamily="@font/opensanscondensedmedium"
             android:text="@string/gallery"
             app:cornerRadius="32dp"
             android:backgroundTint="@color/button"
@@ -84,7 +84,7 @@
                 android:id="@+id/et_description"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/lato" />
+                android:fontFamily="@font/opensanscondensedmedium" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -109,7 +109,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/lato"
+            android:fontFamily="@font/opensanscondensedmedium"
             android:text="@string/upload"
             android:backgroundTint="@color/dicoding"
             app:cornerRadius="16dp"

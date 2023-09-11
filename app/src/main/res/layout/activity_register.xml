@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/lato_bold"
+            android:fontFamily="@font/opensanscondensedmedium"
             android:text="@string/register"
             android:textSize="25sp"
             android:alpha="0"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:alpha="0"
-            android:fontFamily="@font/lato"
+            android:fontFamily="@font/opensanscondensedmedium"
             android:labelFor="@id/et_name"
             android:text="@string/name"
             app:layout_constraintStart_toStartOf="@+id/textView"
@@ -65,7 +65,7 @@
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/lato"
+                android:fontFamily="@font/opensanscondensedmedium"
                 android:hint="@string/enter_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:alpha="0"
-            android:fontFamily="@font/lato"
+            android:fontFamily="@font/opensanscondensedmedium"
             android:labelFor="@id/et_email"
             android:text="@string/email"
             app:layout_constraintStart_toStartOf="@+id/il_name"
@@ -98,7 +98,7 @@
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/lato" />
+                android:fontFamily="@font/opensanscondensedmedium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/lato"
+            android:fontFamily="@font/opensanscondensedmedium"
             android:labelFor="@id/et_password"
             android:text="@string/password"
             android:alpha="0"
@@ -130,7 +130,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/lato" />
+                android:fontFamily="@font/opensanscondensedmedium" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -141,7 +141,7 @@
             android:layout_marginTop="24dp"
             android:alpha="0"
             android:backgroundTint="@color/dicoding"
-            android:fontFamily="@font/lato"
+            android:fontFamily="@font/opensanscondensedmedium"
             android:text="@string/register"
             android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
@@ -167,7 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="0"
-            android:fontFamily="@font/lato_bold"
+            android:fontFamily="@font/opensansbold"
             android:text="@string/login"
             android:textSize="16sp"
             android:textColor="@color/red"

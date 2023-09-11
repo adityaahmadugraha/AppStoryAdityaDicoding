@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.widget
+package com.aditya.appstoryaditya.util
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager

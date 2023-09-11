@@ -38,7 +38,7 @@
             android:name=".ui.inputstory.InputStoryActivity"
             android:exported="false" />
         <receiver
-            android:name=".widget.ImagesBannerWidget"
+            android:name=".util.ImagesBannerWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

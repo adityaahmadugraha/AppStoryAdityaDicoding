@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato_bold"
+        android:fontFamily="@font/opensansbold"
         android:text="@string/login"
         android:textSize="25sp"
         android:alpha="0"
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/lato"
+        android:fontFamily="@font/opensanscondensedmedium"
         android:labelFor="@id/et_email"
         android:text="@string/email"
         android:alpha="0"
@@ -61,7 +61,7 @@
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/lato"
+            android:fontFamily="@font/opensanscondensedmedium"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/lato"
+        android:fontFamily="@font/opensanscondensedmedium"
         android:labelFor="@id/et_email"
         android:text="@string/password"
         android:alpha="0"
@@ -94,7 +94,7 @@
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/lato" />
+            android:fontFamily="@font/opensanscondensedmedium" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -104,7 +104,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/lato"
+        android:fontFamily="@font/opensanscondensedmedium"
         android:text="@string/login"
         android:textAllCaps="false"
         android:backgroundTint="@color/dicoding"
@@ -135,7 +135,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:alpha="0"
-        android:fontFamily="@font/lato_bold"
+        android:fontFamily="@font/opensansbold"
         android:textSize="16sp"
         android:text="@string/register"
         android:textColor="@color/red"
