@@ -1,7 +1,6 @@
 package com.aditya.appstoryaditya.ui.main
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -40,6 +39,7 @@ class MainAdapter :
             binding.apply {
                 val context = itemView.context
                 val firstLetter = data.name.first().toString()
+                val deskripsi = data.description
                 val date = itemView.context.getString(
                     R.string.created_at,
                     data.createdAt?.split("T")?.get(0) ?: ""
@@ -48,6 +48,8 @@ class MainAdapter :
                 tvNama.text = data.name
                 tvCreatedAt.text = date
                 tvFirstLetter.text = firstLetter
+                tvDeskripsi.text = deskripsi
+
 
                 val rnd = Random()
                 val color: Int =

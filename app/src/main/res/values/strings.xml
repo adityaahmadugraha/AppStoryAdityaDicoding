@@ -19,6 +19,7 @@
     <string name="already_have_account">Sudah punya akun?</string>
     <string name="welcome">Selamat datang %1$s !</string>
     <string name="date">11 September 2023</string>
+    <string name="deskripsi">Lorem Ipsum 20</string>
     <string name="add_story">Tambah sebuah story</string>
     <string name="created_at">Diunggah pada %1$s</string>
     <string name="logout">Keluar</string>
