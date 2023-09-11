@@ -1,10 +1,8 @@
 package com.aditya.appstoryaditya.ui.detailstory
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ActivityDetailBinding
 import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.util.Constant.KEY_STORY
@@ -25,7 +23,6 @@ class DetailActivity : AppCompatActivity() {
         story = intent.getParcelableExtra<Story>(KEY_STORY) as Story
 
         setView()
-        supportActionBar?.title = getString(R.string.detail_story)
 
     }
 

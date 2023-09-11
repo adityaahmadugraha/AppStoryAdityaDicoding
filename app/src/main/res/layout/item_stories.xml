@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/lato_bold"
-                    tools:text="@string/f" />
+                    tools:text="@string/A" />
 
             </androidx.cardview.widget.CardView>
 
