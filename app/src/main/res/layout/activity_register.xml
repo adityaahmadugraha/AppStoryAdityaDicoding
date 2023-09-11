@@ -135,48 +135,45 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_register"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
+            android:alpha="0"
+            android:backgroundTint="@color/dicoding"
             android:fontFamily="@font/lato"
             android:text="@string/register"
             android:textAllCaps="false"
-            android:alpha="0"
-            tools:alpha="1"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/il_password" />
+            app:layout_constraintTop_toBottomOf="@+id/il_password"
+            tools:alpha="1" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:alpha="0"
+            android:textSize="16sp"
             android:text="@string/already_have_account"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_login"
             app:layout_constraintEnd_toStartOf="@+id/tv_login"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_register"
+            app:layout_constraintTop_toTopOf="@+id/tv_login"
             tools:alpha="1" />
 
         <TextView
             android:id="@+id/tv_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:alpha="0"
             android:fontFamily="@font/lato_bold"
             android:text="@string/login"
-            android:textColor="@color/blue_500"
-            app:layout_constraintBottom_toBottomOf="@+id/textView4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="@+id/textView4"
+            android:textSize="16sp"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_register"
+            app:layout_constraintEnd_toEndOf="@+id/il_password"
+            app:layout_constraintTop_toTopOf="@+id/btn_register"
             tools:alpha="1" />
 
         <ProgressBar

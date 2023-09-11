@@ -4,13 +4,18 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dicoding">#2D3E50</color>
     <color name="fab">#D3BB66</color>
-    <color name="blue_200">#80d6ff</color>
-    <color name="blue_500">#42a5f5</color>
-    <color name="blue_700">#42a5f5</color>
-    <color name="teal_200">#80d6ff</color>
-    <color name="teal_700">#42a5f5</color>
-    <color name="light_blue_50">#FFE1F5FE</color>
-    <color name="light_blue_200">#FF81D4FA</color>
-    <color name="light_blue_600">#FF039BE5</color>
-    <color name="light_blue_900">#FF01579B</color>
+    <color name="backgroundcard">#65FF6B</color>
+    <color name="red">#CD0309</color>
+    <color name="button">#E13E0A</color>
+
+
+<!--    <color name="blue_200">#80d6ff</color>-->
+<!--    <color name="blue_500">#42a5f5</color>-->
+<!--    <color name="blue_700">#42a5f5</color>-->
+<!--    <color name="teal_200">#80d6ff</color>-->
+<!--    <color name="teal_700">#42a5f5</color>-->
+<!--    <color name="light_blue_50">#FFE1F5FE</color>-->
+<!--    <color name="light_blue_200">#FF81D4FA</color>-->
+<!--    <color name="light_blue_600">#FF039BE5</color>-->
+<!--    <color name="light_blue_900">#FF01579B</color>-->
 </resources>
