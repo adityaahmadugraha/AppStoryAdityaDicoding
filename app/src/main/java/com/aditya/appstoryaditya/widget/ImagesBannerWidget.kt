@@ -14,8 +14,8 @@ import com.aditya.appstoryaditya.R
 class ImagesBannerWidget : AppWidgetProvider() {
 
     companion object {
-        private const val TOAST_ACTION = "com.drsync.storyapp.TOAST_ACTION"
-        const val EXTRA_ITEM = "com.drsync.storyapp.EXTRA_ITEM"
+        private const val TOAST_ACTION = "com.aditya.appstoryaditya.TOAST_ACTION"
+        const val EXTRA_ITEM = "com.aditya.appstoryaditya.EXTRA_ITEM"
 
         private fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
             val intent = Intent(context, StackWidgetService::class.java)

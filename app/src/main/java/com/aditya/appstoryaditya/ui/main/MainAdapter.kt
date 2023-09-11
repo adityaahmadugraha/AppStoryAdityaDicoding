@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.aditya.appstoryaditya.util.Constant.createProgress
 import com.aditya.appstoryaditya.R
-import com.aditya.appstoryaditya.databinding.ItemStoriesBinding
+import com.aditya.appstoryaditya.databinding.ListStoryBinding
+
 import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.ui.detailstory.DetailActivity
 import com.aditya.appstoryaditya.util.Constant.KEY_STORY
@@ -22,18 +23,18 @@ class MainAdapter :
     PagingDataAdapter<Story, MainAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemStoriesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ListStoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val data = getItem(position)
-        if(data != null){
+        if (data != null) {
             holder.bind(data)
         }
     }
 
-    inner class ViewHolder(private val binding: ItemStoriesBinding) :
+    inner class ViewHolder(private val binding: ListStoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Story) {
             binding.apply {
@@ -41,8 +42,7 @@ class MainAdapter :
                 val firstLetter = data.name.first().toString()
                 val deskripsi = data.description
                 val date = itemView.context.getString(
-                    R.string.created_at,
-                    data.createdAt?.split("T")?.get(0) ?: ""
+                    R.string.tgl_ungah, data.createdAt?.split("T")?.get(0) ?: ""
                 )
 
                 tvNama.text = data.name

@@ -21,7 +21,7 @@
     <string name="date">11 September 2023</string>
     <string name="deskripsi">Lorem Ipsum 20</string>
     <string name="add_story">Tambah sebuah story</string>
-    <string name="created_at">Diunggah pada %1$s</string>
+    <string name="tgl_ungah">di bagikan tanggal %1$s</string>
     <string name="logout">Keluar</string>
     <string name="camera">Kamera</string>
     <string name="gallery">Galeri</string>
