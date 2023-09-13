@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.location.Location
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,6 +25,7 @@ import com.aditya.appstoryaditya.util.Constant
 import com.aditya.appstoryaditya.util.Constant.reduceFileImage
 import com.aditya.appstoryaditya.util.Constant.tokenBearer
 import com.aditya.appstoryaditya.util.Constant.uriToFile
+import com.google.android.gms.location.FusedLocationProviderClient
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -63,9 +65,10 @@ class InputStoryActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityInputStoryBinding
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val viewModel: InputStoryViewModel by viewModels()
     private var user: User? = null
-
+    private var location: Location? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInputStoryBinding.inflate(layoutInflater)
