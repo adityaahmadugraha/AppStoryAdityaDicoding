@@ -27,10 +27,10 @@ interface ApiService {
     @GET("stories")
     suspend fun getAllStories(
         @Header("Authorization") header: String,
-        @Query("page") page : Int? = null,
+        @Query("page") page: Int? = null,
         @Query("size") size: Int? = null,
         @Query("location") location: Int? = null
-    ) : ServerResponse
+    ): ServerResponse
 
     @Multipart
     @POST("stories")
@@ -40,6 +40,5 @@ interface ApiService {
         @Part("description") description: RequestBody,
         @Part("lat") lat: RequestBody? = null,
         @Part("lon") lon: RequestBody? = null
-    ) : ServerResponse
-
+    ): ServerResponse
 }

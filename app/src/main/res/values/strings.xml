@@ -45,4 +45,5 @@
     <string name="hybrid_type">Hybrid</string>
     <string name="title_activity_user_maps">User Location</string>
     <string name="marker_in">Marker in %1$s</string>
+    <string name="location_not_found">Lokasi Tidak Diketahui</string>
 </resources>

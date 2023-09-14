@@ -45,6 +45,4 @@ class MainViewModel @Inject constructor(
         userPreference.deleteUser(user)
     }
 
-
-
 }

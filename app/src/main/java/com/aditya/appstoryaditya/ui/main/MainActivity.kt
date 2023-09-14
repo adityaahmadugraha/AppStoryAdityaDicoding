@@ -17,6 +17,7 @@ import com.aditya.appstoryaditya.databinding.ActivityMainBinding
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.ui.inputstory.InputStoryActivity
 import com.aditya.appstoryaditya.ui.login.LoginActivity
+import com.aditya.appstoryaditya.ui.userlocation.UserLocationActivity
 import com.aditya.appstoryaditya.util.Constant.TAG
 import com.aditya.appstoryaditya.util.Constant.tokenBearer
 import dagger.hilt.android.AndroidEntryPoint
@@ -100,9 +101,16 @@ class MainActivity : AppCompatActivity() {
                     it.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(it)
                 }
+
+            }
+            R.id.location -> {
+                Intent(this@MainActivity, UserLocationActivity::class.java).also {
+                    startActivity(it)
+                }
             }
 
         }
+
         return true
     }
 

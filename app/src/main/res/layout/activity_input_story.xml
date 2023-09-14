@@ -64,6 +64,31 @@
             app:layout_constraintTop_toTopOf="@+id/btn_camera" />
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/il_location"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="60dp"
+            android:enabled="false"
+            android:hint="@string/location"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/il_description"
+            app:layout_constraintStart_toStartOf="@+id/il_description"
+            app:layout_constraintTop_toBottomOf="@+id/il_description">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_location"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:enabled="false"
+                android:fontFamily="@font/opensansbolditalic" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/il_description"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
@@ -87,21 +112,31 @@
                 android:fontFamily="@font/opensanscondensedmedium" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/il_location"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="50dp"
-            android:enabled="false"
-            android:hint="@string/location"
-            app:boxCornerRadiusBottomEnd="16dp"
-            app:boxCornerRadiusBottomStart="16dp"
-            app:boxCornerRadiusTopEnd="16dp"
-            app:boxCornerRadiusTopStart="16dp"
-            app:layout_constraintEnd_toEndOf="@+id/il_description"
-            app:layout_constraintStart_toStartOf="@+id/il_description"
-            app:layout_constraintTop_toBottomOf="@+id/il_description"/>
+        <ImageView
+            android:id="@+id/ic_search_location"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/add_location"
+            app:layout_constraintBottom_toBottomOf="@+id/il_location"
+            app:layout_constraintStart_toEndOf="@+id/il_location"
+            app:layout_constraintTop_toTopOf="@+id/il_location" />
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/il_location"-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="50dp"-->
+<!--            android:enabled="false"-->
+<!--            android:hint="@string/location"-->
+<!--            app:boxCornerRadiusBottomEnd="16dp"-->
+<!--            app:boxCornerRadiusBottomStart="16dp"-->
+<!--            app:boxCornerRadiusTopEnd="16dp"-->
+<!--            app:boxCornerRadiusTopStart="16dp"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/il_description"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/il_description"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/il_description"/>-->
 
 
         <com.google.android.material.button.MaterialButton

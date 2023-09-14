@@ -26,6 +26,7 @@ import com.aditya.appstoryaditya.util.Constant.reduceFileImage
 import com.aditya.appstoryaditya.util.Constant.tokenBearer
 import com.aditya.appstoryaditya.util.Constant.uriToFile
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -86,18 +87,71 @@ class InputStoryActivity : AppCompatActivity() {
             user = it
         }
 
-
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         binding.apply {
             btnCamera.setOnClickListener { startTakePhoto() }
             btnGallery.setOnClickListener { startGallery() }
             btnUpload.setOnClickListener { uploadImage() }
+            icSearchLocation.setOnClickListener { getMyLastLocation() }
         }
 
         showLoading()
         clearErrorDescription()
     }
 
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
+                    getMyLastLocation()
+                }
+                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
+                    getMyLastLocation()
+                }
+                else -> {}
+            }
+        }
+
+    private fun setLocationEditText(location: Location) {
+        val latLng = "${location.latitude}, ${location.longitude}"
+        this.location = location
+        binding.etLocation.setText(latLng)
+    }
+
+    private fun checkPermission(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun getMyLastLocation() {
+        if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+        ) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                if (location != null) {
+                    setLocationEditText(location)
+                } else {
+                    Toast.makeText(
+                        this@InputStoryActivity,
+                        R.string.location_not_found,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        } else {
+            requestPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
+        }
+    }
 
     private fun clearErrorDescription() {
         binding.etDescription.doAfterTextChanged { binding.ilDescription.isErrorEnabled = false }
@@ -119,6 +173,8 @@ class InputStoryActivity : AppCompatActivity() {
 
             val token = user?.tokenBearer.toString()
             val desc = description.toRequestBody("text/plain".toMediaType())
+            val lat = if(location != null) location?.latitude.toString().toRequestBody("text/plain". toMediaType()) else null
+            val lon = if(location != null) location?.longitude.toString().toRequestBody("text/plain". toMediaType()) else null
             val imageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
@@ -130,7 +186,8 @@ class InputStoryActivity : AppCompatActivity() {
                 token = token,
                 file = imageMultipart,
                 description = desc,
-            
+                lat = lat,
+                lon = lon
             ){
                 if(!it.error){
                     Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
@@ -175,7 +232,7 @@ class InputStoryActivity : AppCompatActivity() {
             Constant.createTempFile(application).also {
                 val photoUri : Uri = FileProvider.getUriForFile(
                     this@InputStoryActivity,
-                    "com.aditya.storyapp",
+                    "com.drsync.storyapp",
                     it
                 )
                 currentPhotoPath = it.absolutePath
@@ -211,5 +268,4 @@ class InputStoryActivity : AppCompatActivity() {
             binding.imgStory.setImageURI(selectedImg)
         }
     }
-
 }

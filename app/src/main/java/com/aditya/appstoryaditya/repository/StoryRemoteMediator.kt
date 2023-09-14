@@ -20,7 +20,6 @@ class StoryRemoteMediator(
     companion object {
         const val INITIAL_PAGE_INDEX = 1
     }
-
     override suspend fun initialize(): InitializeAction {
         return InitializeAction.LAUNCH_INITIAL_REFRESH
     }
