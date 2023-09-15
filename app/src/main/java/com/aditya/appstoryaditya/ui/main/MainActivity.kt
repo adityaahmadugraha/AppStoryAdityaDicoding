@@ -8,7 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -55,10 +54,6 @@ class MainActivity : AppCompatActivity() {
         getStories()
         showLoading()
 
-//        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-//        setSupportActionBar(toolbar)
-//        supportActionBar?.title = null
-        // Menghilangkan teks di Toolbar
         supportActionBar?.title = null
 
     }

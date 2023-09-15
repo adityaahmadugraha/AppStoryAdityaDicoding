@@ -60,7 +60,6 @@ class InputStoryActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }

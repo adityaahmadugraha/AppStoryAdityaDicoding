@@ -8,7 +8,6 @@ import android.os.Looper
 import android.view.WindowManager
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.ui.login.LoginActivity
-import dagger.hilt.android.AndroidEntryPoint
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

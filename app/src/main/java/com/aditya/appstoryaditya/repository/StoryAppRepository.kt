@@ -66,7 +66,6 @@ class StoryAppRepository @Inject constructor(
             }
         ).flow
     }
-
     fun getStoryWithLocation(
         token: String,
         location: Int?

@@ -51,8 +51,6 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
         supportActionBar?.title = "Back"
 
-
-
     }
 
     private fun showLoading() {

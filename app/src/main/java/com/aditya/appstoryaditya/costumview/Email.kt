@@ -1,6 +1,5 @@
 package com.aditya.appstoryaditya.costumview
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
@@ -42,7 +41,7 @@ class Email : AppCompatEditText {
 
     private fun init() {
         inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-        errorIcon = ContextCompat.getDrawable(context, R.drawable.ic_error) // Ganti dengan ikon error kustom jika diperlukan
+        errorIcon = ContextCompat.getDrawable(context, R.drawable.ic_error)
         errorIcon?.setBounds(0, 0, errorIcon?.intrinsicWidth ?: 0, errorIcon?.intrinsicHeight ?: 0)
 
         doAfterTextChanged { text ->
@@ -60,12 +59,12 @@ class Email : AppCompatEditText {
 
     private fun hideErrorMessage() {
         hideError.value = true
-        setCompoundDrawablesRelative(null, null, null, null) // Menghapus ikon error
+        setCompoundDrawablesRelative(null, null, null, null)
     }
 
     private fun setErrorMessage(message: String) {
         errorMessage.value = message
-        setCompoundDrawablesRelative(null, null, errorIcon, null) // Menampilkan ikon error
+        setCompoundDrawablesRelative(null, null, errorIcon, null)
     }
 
     fun onValidateInput(

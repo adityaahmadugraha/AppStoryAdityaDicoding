@@ -9,7 +9,6 @@ import com.aditya.appstoryaditya.util.Constant.KEY_STORY
 import com.aditya.appstoryaditya.util.Constant.createProgress
 import com.bumptech.glide.Glide
 
-
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
@@ -23,9 +22,7 @@ class DetailActivity : AppCompatActivity() {
         story = intent.getParcelableExtra<Story>(KEY_STORY) as Story
 
         setView()
-
     }
-
     private fun setView() {
         binding.apply {
             tvTitle.text = story?.name
