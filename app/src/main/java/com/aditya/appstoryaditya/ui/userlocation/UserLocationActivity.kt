@@ -48,6 +48,11 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        supportActionBar?.title = "Back"
+
+
+
     }
 
     private fun showLoading() {
@@ -87,17 +92,27 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-    private fun getMyLocation() {
-        if (ContextCompat.checkSelfPermission(
-                this.applicationContext,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            mMap.isMyLocationEnabled = true
-        } else {
-            requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
+private fun getMyLocation() {
+    if (ContextCompat.checkSelfPermission(
+            this.applicationContext,
+            android.Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+    ) {
+        mMap.isMyLocationEnabled = true
+
+        mMap.setOnMyLocationButtonClickListener {
+            val userLocation = mMap.myLocation
+            if (userLocation != null) {
+                val userLatLng = LatLng(userLocation.latitude, userLocation.longitude)
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15f))
+            }
+            true
         }
+    } else {
+        requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
     }
+}
+
 
     private fun addUserMarker() {
         viewModel.getUser {

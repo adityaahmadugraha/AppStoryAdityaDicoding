@@ -75,6 +75,8 @@ class InputStoryActivity : AppCompatActivity() {
         binding = ActivityInputStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Back"
+
         if (!allPermissionsGranted()) {
             ActivityCompat.requestPermissions(
                 this,
@@ -98,6 +100,7 @@ class InputStoryActivity : AppCompatActivity() {
 
         showLoading()
         clearErrorDescription()
+
     }
 
     private val requestPermissionLauncher =

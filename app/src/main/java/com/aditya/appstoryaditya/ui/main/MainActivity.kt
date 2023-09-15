@@ -58,6 +58,9 @@ class MainActivity : AppCompatActivity() {
 //        val toolbar = findViewById<Toolbar>(R.id.toolbar)
 //        setSupportActionBar(toolbar)
 //        supportActionBar?.title = null
+        // Menghilangkan teks di Toolbar
+        supportActionBar?.title = null
+
     }
 
     @OptIn(ExperimentalPagingApi::class)

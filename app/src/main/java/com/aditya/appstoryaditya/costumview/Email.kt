@@ -3,10 +3,12 @@ package com.aditya.appstoryaditya.costumview
 import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import android.text.InputType
 import android.util.AttributeSet
 import android.util.Patterns
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
@@ -31,6 +33,7 @@ class Email : AppCompatEditText {
 
     private val errorMessage = MutableLiveData<String>()
     private val hideError = MutableLiveData<Boolean>()
+    private var errorIcon: Drawable? = null
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -39,6 +42,9 @@ class Email : AppCompatEditText {
 
     private fun init() {
         inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+        errorIcon = ContextCompat.getDrawable(context, R.drawable.ic_error) // Ganti dengan ikon error kustom jika diperlukan
+        errorIcon?.setBounds(0, 0, errorIcon?.intrinsicWidth ?: 0, errorIcon?.intrinsicHeight ?: 0)
+
         doAfterTextChanged { text ->
             if (text?.isEmpty() == true) {
                 setErrorMessage(context.getString(R.string.must_not_empty))
@@ -54,20 +60,20 @@ class Email : AppCompatEditText {
 
     private fun hideErrorMessage() {
         hideError.value = true
+        setCompoundDrawablesRelative(null, null, null, null) // Menghapus ikon error
     }
 
-    private fun setErrorMessage(message: String){
+    private fun setErrorMessage(message: String) {
         errorMessage.value = message
+        setCompoundDrawablesRelative(null, null, errorIcon, null) // Menampilkan ikon error
     }
 
     fun onValidateInput(
-        activity: Activity,
-        hideErrorMessage : () -> Unit,
-        setErrorMessage : (message : String) -> Unit
-    ){
-        hideError.observe(activity as LifecycleOwner) { hideErrorMessage() }
-        errorMessage.observe(activity as LifecycleOwner) { setErrorMessage(it)}
+        activity: LifecycleOwner,
+        hideErrorMessage: () -> Unit,
+        setErrorMessage: (message: String) -> Unit
+    ) {
+        hideError.observe(activity) { hideErrorMessage() }
+        errorMessage.observe(activity) { setErrorMessage(it) }
     }
 }
-
-
