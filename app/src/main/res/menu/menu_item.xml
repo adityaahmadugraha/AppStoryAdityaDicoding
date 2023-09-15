@@ -9,5 +9,5 @@
         android:id="@+id/location"
         android:title="@string/title_activity_user_maps"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_location"/>
+        android:icon="@drawable/ic_map"/>
 </menu>

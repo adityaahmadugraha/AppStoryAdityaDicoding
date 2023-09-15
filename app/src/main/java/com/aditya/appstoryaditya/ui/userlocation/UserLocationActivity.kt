@@ -66,16 +66,17 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isCompassEnabled = true
         mMap.uiSettings.isMapToolbarEnabled = true
 
-        val padang = LatLng(-0.848425, 100.364725)
+        val sumbar = LatLng(-0.952730, 100.389315)
         mMap.addMarker(
-            MarkerOptions().position(padang).title(getString(R.string.marker_in, "Padang"))
+            MarkerOptions().position(sumbar).title(getString(R.string.marker_in, "Padang"))
         )
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(padang))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sumbar))
 
         showLoading()
         getMyLocation()
         setMapStyle()
         addUserMarker()
+
     }
 
     private val requestPermissionLauncher =

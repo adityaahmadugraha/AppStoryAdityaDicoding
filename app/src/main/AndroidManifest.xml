@@ -38,7 +38,8 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAcVXG7_9aQo1SueHIeGYqyk1e2En3Fx10" />
+            android:value="AIzaSyDjY8D9gsxgJGLyvMMAT3cyO_0mcxkFqqs" />
+<!--            android:value="AIzaSyAcVXG7_9aQo1SueHIeGYqyk1e2En3Fx10" />-->
 
         <activity
             android:name=".ui.userlocation.UserLocationActivity"
