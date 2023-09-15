@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.ui.userlocation
+package com.aditya.appstoryaditya.ui.location
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

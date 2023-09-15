@@ -18,11 +18,13 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.title = "Back"
 
         story = intent.getParcelableExtra<Story>(KEY_STORY) as Story
 
         setView()
     }
+
     private fun setView() {
         binding.apply {
             tvTitle.text = story?.name

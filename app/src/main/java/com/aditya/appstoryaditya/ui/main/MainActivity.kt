@@ -16,7 +16,7 @@ import com.aditya.appstoryaditya.databinding.ActivityMainBinding
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.ui.inputstory.InputStoryActivity
 import com.aditya.appstoryaditya.ui.login.LoginActivity
-import com.aditya.appstoryaditya.ui.userlocation.UserLocationActivity
+import com.aditya.appstoryaditya.ui.location.UserLocationActivity
 import com.aditya.appstoryaditya.util.Constant.TAG
 import com.aditya.appstoryaditya.util.Constant.tokenBearer
 import dagger.hilt.android.AndroidEntryPoint

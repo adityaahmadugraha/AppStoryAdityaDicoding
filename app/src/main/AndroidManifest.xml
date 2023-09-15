@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -39,7 +40,7 @@
             android:value="AIzaSyDjY8D9gsxgJGLyvMMAT3cyO_0mcxkFqqs" />
 
         <activity
-            android:name=".ui.userlocation.UserLocationActivity"
+            android:name=".ui.location.UserLocationActivity"
             android:exported="false"
             android:parentActivityName=".ui.main.MainActivity"
             android:label="@string/title_activity_user_location" />
@@ -91,7 +92,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.aditya.storyappaditya"
+            android:authorities="com.aditya.appstoryaditya"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

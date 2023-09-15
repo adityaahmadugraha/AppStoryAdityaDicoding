@@ -123,15 +123,6 @@
             app:layout_constraintTop_toTopOf="@+id/il_location"
             />
 
-<!--        <com.google.android.material.switchmaterial.SwitchMaterial-->
-<!--            android:id="@+id/ic_switch"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/il_location"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/il_location"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/il_location"-->
-<!--            />-->
-
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_upload"
             android:layout_width="120dp"

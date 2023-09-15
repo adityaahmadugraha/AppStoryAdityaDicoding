@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.ui.userlocation
+package com.aditya.appstoryaditya.ui.location
 
 import android.content.pm.PackageManager
 import android.content.res.Resources

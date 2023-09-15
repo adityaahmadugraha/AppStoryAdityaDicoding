@@ -234,7 +234,7 @@ class InputStoryActivity : AppCompatActivity() {
             Constant.createTempFile(application).also {
                 val photoUri : Uri = FileProvider.getUriForFile(
                     this@InputStoryActivity,
-                    "com.drsync.storyapp",
+                    "com.aditya.appstoryaditya",
                     it
                 )
                 currentPhotoPath = it.absolutePath
