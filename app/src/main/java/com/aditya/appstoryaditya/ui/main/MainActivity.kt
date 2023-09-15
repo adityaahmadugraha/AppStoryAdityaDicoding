@@ -55,9 +55,9 @@ class MainActivity : AppCompatActivity() {
         getStories()
         showLoading()
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = null
+//        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+//        setSupportActionBar(toolbar)
+//        supportActionBar?.title = null
     }
 
     @OptIn(ExperimentalPagingApi::class)

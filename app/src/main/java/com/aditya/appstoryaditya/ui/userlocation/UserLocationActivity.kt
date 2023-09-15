@@ -1,10 +1,8 @@
 package com.aditya.appstoryaditya.ui.userlocation
 
-import android.Manifest
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.location.Geocoder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -12,21 +10,22 @@ import android.view.MenuItem
 import android.widget.ProgressBar
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ActivityUserLocationBinding
+import com.aditya.appstoryaditya.models.User
+import com.aditya.appstoryaditya.util.Constant.TAG
+import com.aditya.appstoryaditya.util.Constant.tokenBearer
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import com.aditya.appstoryaditya.models.User
-import com.aditya.appstoryaditya.util.Constant.TAG
-import com.aditya.appstoryaditya.util.Constant.tokenBearer
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 import java.util.Locale
@@ -68,7 +67,7 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val sumbar = LatLng(-0.952730, 100.389315)
         mMap.addMarker(
-            MarkerOptions().position(sumbar).title(getString(R.string.marker_in, "Padang"))
+            MarkerOptions().position(sumbar).title(getString(R.string.marker_in, "Sumbar"))
         )
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sumbar))
 
@@ -91,12 +90,12 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun getMyLocation() {
         if (ContextCompat.checkSelfPermission(
                 this.applicationContext,
-                Manifest.permission.ACCESS_FINE_LOCATION
+                android.Manifest.permission.ACCESS_FINE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             mMap.isMyLocationEnabled = true
         } else {
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
 
