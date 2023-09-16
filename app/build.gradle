@@ -98,6 +98,9 @@ dependencies {
     //Room
     implementation 'androidx.room:room-ktx:2.5.0-alpha02'
     kapt 'androidx.room:room-compiler:2.5.0-alpha02'
+    implementation 'androidx.room:room-ktx:2.4.0-rc01'
+    kapt 'androidx.room:room-compiler:2.4.0-rc01'
+
 
     //paging 3
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
@@ -105,13 +108,10 @@ dependencies {
     //Room Paging
     implementation 'androidx.room:room-paging:2.5.0-alpha02'
 
-    implementation 'androidx.room:room-ktx:2.4.0-rc01'
-    kapt 'androidx.room:room-compiler:2.4.0-rc01'
-
-
-
-
-
+    // InstantTaskExecutorRule
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1"
+    testImplementation 'org.mockito:mockito-core:3.12.4'
+    testImplementation 'org.mockito:mockito-inline:3.12.4'
 
 
 
