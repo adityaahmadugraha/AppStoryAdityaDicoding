@@ -25,9 +25,9 @@ class LoginViewModel @Inject constructor(
     private val repository: AppRepository,
     private val preference: UserPreference
 ) : ViewModel() {
-
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
+//
+//    private val _isLoading = MutableLiveData<Boolean>()
+//    val isLoading: LiveData<Boolean> = _isLoading
 
 //    fun loginUser(
 //        context: Context,

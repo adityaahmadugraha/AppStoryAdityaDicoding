@@ -6,6 +6,8 @@ import android.animation.PropertyValuesHolder
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -14,6 +16,7 @@ import com.aditya.appstoryaditya.databinding.ActivityLoginBinding
 import com.aditya.appstoryaditya.models.LoginRequest
 import com.aditya.appstoryaditya.ui.main.MainActivity
 import com.aditya.appstoryaditya.ui.register.RegisterActivity
+import com.aditya.appstoryaditya.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -57,10 +60,8 @@ class LoginActivity : AppCompatActivity() {
             imageView.contentDescription =
                 getString(R.string.image_description, getString(R.string.login))
 
-
         }
 
-        showLoading()
         playAnimation()
 
     }
@@ -73,16 +74,26 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser(loginRequest: LoginRequest) {
-        viewModel.loginUser(loginRequest)
-        intentToMain()
-    }
-
-    private fun showLoading() {
-        viewModel.isLoading.observe(this@LoginActivity) {
+        viewModel.loginUser(loginRequest).observe(this@LoginActivity) { result ->
             binding.apply {
-                btnLogin.isEnabled = !it
-                progressBar.isVisible = it
+                when (result) {
+
+                    is Resource.Loading -> {
+                        progressBar.visibility = VISIBLE
+                    }
+
+                    is Resource.Success -> {
+                        progressBar.visibility = GONE
+                        intentToMain()
+                    }
+
+                    is Resource.Error -> {
+                        progressBar.visibility = GONE
+                        btnLogin.isEnabled
+                    }
+                }
             }
+
         }
     }
 
