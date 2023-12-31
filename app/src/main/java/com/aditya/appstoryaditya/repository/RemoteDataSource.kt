@@ -29,28 +29,28 @@ class RemoteDataSource @Inject constructor(
     private val remoteDataSource : Repository
 ) {
     fun registerUser(registerRequest: RegisterRequest) = flow<Resource<ServerResponse>> {
-        emit(Resource.loading())
+        emit(Resource.Loading())
         val response = apiService.registerUser(registerRequest)
         response.let {
-            if (!it.error) emit(Resource.success(it))
-            else emit(Resource.error(it.message))
+            if (!it.error) emit(Resource.Success(it))
+            else emit(Resource.Error(it.message))
         }
     }.catch {
         Log.d(TAG, "registerUser: ${it.message}")
-        emit(Resource.error(it.message ?: ""))
+        emit(Resource.Error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 
 
     fun loginUser(loginRequest: LoginRequest) = flow<Resource<ServerResponse>> {
-        emit(Resource.loading())
+        emit(Resource.Loading())
         val response = apiService.loginUser(loginRequest)
         response.let {
-            if (!it.error) emit(Resource.success(it))
+            if (!it.error) emit(Resource.Success(it))
             else emit(Resource.Error(it.message))
         }
     }.catch {
         Log.d(TAG, "loginUser: ${it.message}")
-        emit(Resource.error(it.message ?: ""))
+        emit(Resource.Error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 
     @ExperimentalPagingApi
@@ -72,15 +72,15 @@ class RemoteDataSource @Inject constructor(
         token: String,
         location: Int?
     ) = flow<Resource<ServerResponse>> {
-        emit(Resource.loading())
+        emit(Resource.Loading())
         val response = apiService.getAllStories(token, location = location)
         response.let {
-            if (!it.error) emit(Resource.success(it))
-            else emit(Resource.error(it.message))
+            if (!it.error) emit(Resource.Success(it))
+            else emit(Resource.Error(it.message))
         }
     }.catch {
         Log.d(TAG, "getAllStories: ${it.message}")
-        emit(Resource.error(it.message ?: ""))
+        emit(Resource.Error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 
     fun inputStory(
@@ -90,16 +90,16 @@ class RemoteDataSource @Inject constructor(
         lat: RequestBody? = null,
         lon: RequestBody? = null
     ): Flow<Resource<ServerResponse>> = flow {
-        emit(Resource.loading())
+        emit(Resource.Loading())
         try {
             val response = remoteDataSource.inputStory(token, file, description, lat, lon)
             if (!response.error) {
-                emit(Resource.success(response))
+                emit(Resource.Success(response))
             } else {
-                emit(Resource.error(response.message))
+                emit(Resource.Error(response.message))
             }
         } catch (e: Exception) {
-            emit(Resource.error("An error occurred"))
+            emit(Resource.Error("An error occurred"))
         }
     }.flowOn(Dispatchers.IO)
 
