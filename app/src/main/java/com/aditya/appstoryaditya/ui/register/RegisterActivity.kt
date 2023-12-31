@@ -6,11 +6,13 @@ import android.animation.PropertyValuesHolder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ActivityRegisterBinding
 import com.aditya.appstoryaditya.models.RegisterRequest
+import com.aditya.appstoryaditya.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,48 +31,63 @@ class RegisterActivity : AppCompatActivity() {
         binding.apply {
             setInputEmail()
             setInputPassword()
+
             btnRegister.setOnClickListener {
-                val nama = etName.text.toString()
+                val name = etName.text.toString()
                 val email = etEmail.text.toString()
                 val password = etPassword.text.toString()
 
-                if (validateInput(nama)) {
-                    registerUser(
-                        RegisterRequest(nama, email, password)
-                    )
+                if (validateInput(name)) {
+                    registerUser(RegisterRequest(name, email, password))
                 }
-
             }
+
             tvLogin.setOnClickListener {
                 finish()
             }
+
             imageView.contentDescription =
                 getString(R.string.image_description, getString(R.string.register))
         }
-        showLoading()
+
         playAnimation()
     }
 
-    private fun showLoading() {
-        viewModel.isLoading.observe(this){
-            binding.apply {
-                progressBar.isVisible = it
-                btnRegister.isEnabled = !it
-            }
-        }
-    }
 
-    private fun registerUser(registerRequest: RegisterRequest) {
-        viewModel.registerUser(this@RegisterActivity, registerRequest){ success ->
-            if(success){
-                finish()
-            }
-        }
-    }
+private fun registerUser(registerRequest: RegisterRequest) {
+    viewModel.registerUser(registerRequest).observe(this@RegisterActivity) { response ->
+     binding.apply {
+         when (response) {
+             is Resource.Loading -> {
+                 progressBar.visibility = View.VISIBLE
+             }
 
-    private fun validateInput(nama: String): Boolean {
+             is Resource.Success -> {
+                 progressBar.visibility = View.GONE
+                 Toast.makeText(this@RegisterActivity, response.data.message, Toast.LENGTH_SHORT)
+                     .show()
+
+                 finish()
+             }
+
+             is Resource.Error -> {
+                 progressBar.visibility = View.GONE
+                 Toast.makeText(
+                     this@RegisterActivity,
+                     getString(R.string.terjadi_kesalahan),
+                     Toast.LENGTH_SHORT
+                 ).show()
+             }
+         }
+     }
+
+    }
+}
+
+
+    private fun validateInput(name: String): Boolean {
         binding.apply {
-            if (nama.isEmpty()) {
+            if (name.isEmpty()) {
                 ilName.isErrorEnabled = true
                 ilName.error = getString(R.string.must_not_empty)
                 return false
@@ -81,6 +98,8 @@ class RegisterActivity : AppCompatActivity() {
             return true
         }
     }
+
+
 
     private fun playAnimation() {
         binding.apply {

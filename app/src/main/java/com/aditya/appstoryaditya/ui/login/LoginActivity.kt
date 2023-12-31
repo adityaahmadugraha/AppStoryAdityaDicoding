@@ -10,7 +10,6 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ActivityLoginBinding
 import com.aditya.appstoryaditya.models.LoginRequest

@@ -1,51 +1,19 @@
 package com.aditya.appstoryaditya.ui.register
 
-import android.content.Context
-import android.widget.Toast
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.asLiveData
 import com.aditya.appstoryaditya.models.RegisterRequest
-import com.aditya.appstoryaditya.repository.RemoteDataSource
-import com.aditya.appstoryaditya.util.Resource
+import com.aditya.appstoryaditya.repository.AppRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    private val remoteDataSource: RemoteDataSource
+    private val repository: AppRepository
 ) : ViewModel() {
 
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
+    fun registerUser(request: RegisterRequest) = repository.registerUser(request).asLiveData()
 
-    fun registerUser(
-        context: Context,
-        registerRequest: RegisterRequest,
-        onSuccess: (Boolean) -> Unit
-    ) = viewModelScope.launch {
-        remoteDataSource.registerUser(registerRequest).collect { response ->
-            when (response) {
-                is Resource.Loading -> {
-                    _isLoading.value = true
-                }
-                is Resource.Success -> {
-                    _isLoading.value = false
-                    Toast.makeText(
-                        context,
-                        response.data.message,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    onSuccess(true)
-                }
-                is Resource.Error -> {
-                    _isLoading.value = false
-                    Toast.makeText(context, "Error: ${response.error}", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
+    fun getUser() = repository.getUser().asLiveData()
 }

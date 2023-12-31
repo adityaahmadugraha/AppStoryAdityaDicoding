@@ -7,6 +7,7 @@
     <string name="not_type_email">Format email salah (@)</string>
     <string name="image_description">Gambar %1$s</string>
     <string name="login">Login</string>
+    <string name="terjadi_kesalahan">Terjadi kesalahan, coba lagi</string>
     <string name="email">Email</string>
     <string name="email_required">Email is required</string>
     <string name="invalid_email">Invalid email address</string>
