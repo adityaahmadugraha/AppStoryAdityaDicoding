@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    private val repository: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource
 ) : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
@@ -27,7 +27,7 @@ class RegisterViewModel @Inject constructor(
         registerRequest: RegisterRequest,
         onSuccess: (Boolean) -> Unit
     ) = viewModelScope.launch {
-        repository.registerUser(registerRequest).collect { response ->
+        remoteDataSource.registerUser(registerRequest).collect { response ->
             when (response) {
                 is Resource.Loading -> {
                     _isLoading.value = true

@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: RemoteDataSource,
+    private val remoteDataSource: RemoteDataSource,
     private val userPreference: UserPreference
 ) : ViewModel() {
 
@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor(
         token: String,
         onSuccess: (PagingData<Story>) -> Unit
     ) = viewModelScope.launch {
-        repository.getAllStories(token).collect {
+        remoteDataSource.getAllStories(token).collect {
             onSuccess(it)
         }
     }

@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class InputStoryViewModel @Inject constructor(
-    private val repository : RemoteDataSource,
+    private val remoteDataSource: RemoteDataSource,
     private val userPreference: UserPreference
 ) : ViewModel() {
 
@@ -32,7 +32,7 @@ class InputStoryViewModel @Inject constructor(
         lon: RequestBody? = null,
         onSuccess: (ServerResponse) -> Unit
     ) = viewModelScope.launch {
-        repository.inputStory(token, file, description, lat, lon).collect { response ->
+        remoteDataSource.inputStory(token, file, description, lat, lon).collect { response ->
         when(response){
                 is Resource.Loading -> {
                     _isLoading.value = true

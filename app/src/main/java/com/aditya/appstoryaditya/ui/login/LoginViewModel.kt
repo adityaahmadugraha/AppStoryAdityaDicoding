@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val repository: RemoteDataSource,
+    private val remoteDataSource: RemoteDataSource,
     private val preference: UserPreference
 ) : ViewModel() {
 
@@ -31,7 +31,7 @@ class LoginViewModel @Inject constructor(
         loginRequest: LoginRequest,
         onSuccess: (User) -> Unit
     ) = viewModelScope.launch {
-        repository.loginUser(loginRequest).collect { response ->
+        remoteDataSource.loginUser(loginRequest).collect { response ->
             when (response) {
                 is Resource.Loading -> {
                     _isLoading.value = true
