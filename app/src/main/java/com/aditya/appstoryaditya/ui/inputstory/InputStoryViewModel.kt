@@ -50,6 +50,7 @@ class InputStoryViewModel @Inject constructor(
         }
     }
 
+
     fun getUser(
         user: (User) -> Unit
     ) = viewModelScope.launch {

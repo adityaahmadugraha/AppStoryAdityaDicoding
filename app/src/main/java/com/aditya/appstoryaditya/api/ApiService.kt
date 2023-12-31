@@ -29,8 +29,7 @@ interface ApiService {
         @Header("Authorization") header: String,
         @Query("page") page: Int? = null,
         @Query("size") size: Int? = null,
-//        @Query("location") location: Int? = null
-        @Query("location") location : Int? = 1,
+        @Query("location") location: Int? = null
     ): ServerResponse
 
     @Multipart

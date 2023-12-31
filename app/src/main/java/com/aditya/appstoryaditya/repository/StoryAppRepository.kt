@@ -66,6 +66,7 @@ class StoryAppRepository @Inject constructor(
             }
         ).flow
     }
+
     fun getStoryWithLocation(
         token: String,
         location: Int?
@@ -80,6 +81,8 @@ class StoryAppRepository @Inject constructor(
         Log.d(TAG, "getAllStories: ${it.message}")
         emit(Resource.error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
+
+
 
     fun inputStory(
         token: String,
@@ -98,4 +101,5 @@ class StoryAppRepository @Inject constructor(
         Log.d(TAG, "getAllStories: ${it.message}")
         emit(Resource.error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
+
 }
