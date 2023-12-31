@@ -5,11 +5,13 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.models.LoginRequest
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.models.UserPreference
+import com.aditya.appstoryaditya.repository.AppRepository
 import com.aditya.appstoryaditya.repository.RemoteDataSource
 import com.aditya.appstoryaditya.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
+    private val repository: AppRepository,
     private val preference: UserPreference
 ) : ViewModel() {
 
@@ -68,6 +71,8 @@ class LoginViewModel @Inject constructor(
             user(it)
         }
     }
+
+//    fun getUser() = repository.getUser().asLiveData()
 
 
 }

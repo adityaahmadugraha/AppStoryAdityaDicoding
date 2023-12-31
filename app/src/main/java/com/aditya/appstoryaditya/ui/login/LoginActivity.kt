@@ -59,6 +59,12 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
+//            viewModel.getUser().observe(this@LoginActivity) { user ->
+//                if (user.token.isNotEmpty()) {
+//                    intentToMain()
+//                }
+//            }
+
         }
         showLoading()
         playAnimation()

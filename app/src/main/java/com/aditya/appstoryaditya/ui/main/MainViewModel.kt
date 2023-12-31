@@ -3,12 +3,14 @@ package com.aditya.appstoryaditya.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
 import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.models.UserPreference
+import com.aditya.appstoryaditya.repository.AppRepository
 import com.aditya.appstoryaditya.repository.RemoteDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
+    private val repository: AppRepository,
     private val userPreference: UserPreference
 ) : ViewModel() {
 
@@ -33,16 +36,18 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getUser(
-        user: (User) -> Unit
-    ) = viewModelScope.launch {
-        userPreference.getUser().collect{
-            user(it)
-        }
-    }
+//    fun getUser(
+//        user: (User) -> Unit
+//    ) = viewModelScope.launch {
+//        userPreference.getUser().collect{
+//            user(it)
+//        }
+//    }
 
-    fun logout(user: User) = viewModelScope.launch {
-        userPreference.deleteUser()
+    fun getUser() = repository.getUser().asLiveData()
+
+    fun logout() = viewModelScope.launch {
+        repository.deleteUser()
     }
 
 }

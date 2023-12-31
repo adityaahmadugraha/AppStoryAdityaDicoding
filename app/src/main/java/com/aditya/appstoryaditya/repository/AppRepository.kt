@@ -7,15 +7,15 @@ import javax.inject.Inject
 
 class AppRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
-    private val userPreference: UserPreference
+    private val localData: UserPreference
 ) {
 
     fun loginUser(request: LoginRequest) = remoteDataSource.loginUser(request)
 
-    fun getUser() = userPreference.getUser()
+    fun getUser() = localData.getUser()
 
-    suspend fun saveUser(userLocal: User) = userPreference.saveUser(userLocal)
+    suspend fun saveUser(userLocal: User) = localData.saveUser(userLocal)
 
-    suspend fun deleteUser() = userPreference.deleteUser()
+    suspend fun deleteUser() = localData.deleteUser()
 
 }

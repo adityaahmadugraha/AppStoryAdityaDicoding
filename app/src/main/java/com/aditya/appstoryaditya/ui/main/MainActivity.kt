@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
-    private var user: User? = null
+
     private lateinit var mAdapter: MainAdapter
     private val viewModel: MainViewModel by viewModels()
 
@@ -39,11 +39,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        viewModel.getUser {
-            user = it
-        }
 
-
+        viewModel.getUser()
         binding.fabTambah.setOnClickListener {
             Intent(this@MainActivity, InputStoryActivity::class.java).also {
                 launcherInsertStory.launch(it)
@@ -73,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             R.id.logout -> {
                 showLogoutConfirmationDialog()
             }
+
             R.id.location -> {
                 Intent(this@MainActivity, UserLocationActivity::class.java).also {
                     startActivity(it)
@@ -88,7 +86,7 @@ class MainActivity : AppCompatActivity() {
         builder.setMessage("Apakah Anda yakin ingin keluar?")
 
         builder.setPositiveButton("Ya") { _, _ ->
-            user?.let { viewModel.logout(it) }
+            viewModel.getUser().let { viewModel.logout() }
             Intent(this@MainActivity, LoginActivity::class.java).also {
                 it.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(it)
@@ -119,14 +117,13 @@ class MainActivity : AppCompatActivity() {
 
     @OptIn(ExperimentalPagingApi::class)
     private fun getStories() {
-        val token = user?.tokenBearer.toString()
+        val token = viewModel.getUser().toString()
         viewModel.getStories(token) {
             mAdapter.submitData(lifecycle, it)
         }
     }
 
     private fun setupRecyclerData() {
-
         mAdapter = MainAdapter { story ->
             intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
                 putExtra("description", story.description)
@@ -146,5 +143,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
     }
+
 }
+
 
