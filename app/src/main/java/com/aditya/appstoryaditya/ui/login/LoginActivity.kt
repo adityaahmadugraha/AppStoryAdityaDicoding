@@ -100,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
     private fun playAnimation() {
         binding.apply {
             ObjectAnimator.ofPropertyValuesHolder(
-                binding.imageView,
+                imageView,
                 PropertyValuesHolder.ofFloat(View.SCALE_X, 0.5f, 1.0f),
                 PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.5f, 1.0f)
             ).apply {
@@ -108,7 +108,6 @@ class LoginActivity : AppCompatActivity() {
                 repeatCount = ObjectAnimator.INFINITE
                 repeatMode = ObjectAnimator.REVERSE
             }.start()
-
 
             val login = ObjectAnimator.ofFloat(textView, View.ALPHA, 1f).setDuration(500)
             val emailLable = ObjectAnimator.ofFloat(textView2, View.ALPHA, 1f).setDuration(200)
