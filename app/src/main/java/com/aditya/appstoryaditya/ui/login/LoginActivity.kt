@@ -31,7 +31,15 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
         binding.apply {
+
+            tvRegister.setOnClickListener {
+                Intent(this@LoginActivity, RegisterActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
+
             setInputEmail()
             setInputPassword()
 
@@ -45,16 +53,13 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-            tvRegister.setOnClickListener {
-                Intent(this@LoginActivity, RegisterActivity::class.java).also {
-                    startActivity(it)
-                }
-            }
+
             imageView.contentDescription =
                 getString(R.string.image_description, getString(R.string.login))
 
 
         }
+
         showLoading()
         playAnimation()
 
@@ -68,9 +73,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginUser(loginRequest: LoginRequest) {
-        viewModel.loginUser(this@LoginActivity, loginRequest) { user ->
-            intentToMain()
-        }
+        viewModel.loginUser(loginRequest)
+        intentToMain()
     }
 
     private fun showLoading() {
@@ -154,3 +158,4 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 }
+

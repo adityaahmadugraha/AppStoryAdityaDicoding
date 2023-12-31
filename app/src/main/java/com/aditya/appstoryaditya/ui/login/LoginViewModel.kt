@@ -21,7 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val remoteDataSource: RemoteDataSource,
+//    private val remoteDataSource: RemoteDataSource,
     private val repository: AppRepository,
     private val preference: UserPreference
 ) : ViewModel() {
@@ -29,41 +29,48 @@ class LoginViewModel @Inject constructor(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun loginUser(
-        context: Context,
-        loginRequest: LoginRequest,
-        onSuccess: (User) -> Unit
-    ) = viewModelScope.launch {
-        remoteDataSource.loginUser(loginRequest).collect { response ->
-            when (response) {
-                is Resource.Loading -> {
-                    _isLoading.value = true
-                }
-                is Resource.Success -> {
-                    _isLoading.value = false
+//    fun loginUser(
+//        context: Context,
+//        loginRequest: LoginRequest,
+//        onSuccess: (User) -> Unit
+//    ) = viewModelScope.launch {
+//        remoteDataSource.loginUser(loginRequest).collect { response ->
+//            when (response) {
+//                is Resource.Loading -> {
+//                    _isLoading.value = true
+//                }
+//                is Resource.Success -> {
+//                    _isLoading.value = false
+//
+//                    if (!response.data.error) {
+//                        preference.saveUser(response.data.loginResult as User)
+//
+//                        Toast.makeText(
+//                            context,
+//                            context.getString(R.string.welcome, response.data.loginResult.name),
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//
+//                        onSuccess(response.data.loginResult)
+//                    } else {
+//                        Toast.makeText(context, response.data.message, Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//                is Resource.Error -> {
+//                    _isLoading.value = false
+//                    Toast.makeText(context, "Error: ${response.error}", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        }
+//    }
 
-                    if (!response.data.error) {
-                        preference.saveUser(response.data.loginResult as User)
 
-                        Toast.makeText(
-                            context,
-                            context.getString(R.string.welcome, response.data.loginResult.name),
-                            Toast.LENGTH_SHORT
-                        ).show()
+    fun loginUser(request: LoginRequest) = repository.loginUser(request).asLiveData()
 
-                        onSuccess(response.data.loginResult)
-                    } else {
-                        Toast.makeText(context, response.data.message, Toast.LENGTH_SHORT).show()
-                    }
-                }
-                is Resource.Error -> {
-                    _isLoading.value = false
-                    Toast.makeText(context, "Error: ${response.error}", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
+
+    fun saveUser(user: User) = viewModelScope.launch {
+        repository.saveUser(user)
     }
-
     fun getUser() = repository.getUser().asLiveData()
 
 
