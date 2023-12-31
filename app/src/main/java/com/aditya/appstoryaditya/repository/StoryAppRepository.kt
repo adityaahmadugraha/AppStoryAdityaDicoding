@@ -83,7 +83,6 @@ class StoryAppRepository @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
 
-
     fun inputStory(
         token: String,
         file: MultipartBody.Part,
@@ -98,7 +97,6 @@ class StoryAppRepository @Inject constructor(
             else emit(Resource.error(it.message))
         }
     }.catch {
-        Log.d(TAG, "getAllStories: ${it.message}")
         emit(Resource.error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 

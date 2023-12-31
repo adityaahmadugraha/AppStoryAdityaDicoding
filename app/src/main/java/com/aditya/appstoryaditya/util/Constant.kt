@@ -19,8 +19,6 @@ import java.util.Locale
 
 object Constant {
 
-    const val KEY_STORY = "story"
-
     val KEY_USERID = stringPreferencesKey("userId")
     val KEY_NAME = stringPreferencesKey("name")
     val KEY_TOKEN = stringPreferencesKey("name")

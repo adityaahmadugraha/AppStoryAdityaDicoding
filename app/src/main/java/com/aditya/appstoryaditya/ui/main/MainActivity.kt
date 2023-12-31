@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ActivityMainBinding
 import com.aditya.appstoryaditya.models.User
+import com.aditya.appstoryaditya.ui.detailstory.DetailActivity
 import com.aditya.appstoryaditya.ui.inputstory.InputStoryActivity
 import com.aditya.appstoryaditya.ui.login.LoginActivity
 import com.aditya.appstoryaditya.ui.location.UserLocationActivity
@@ -74,7 +75,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerData() {
-        mAdapter = MainAdapter()
+
+        mAdapter = MainAdapter { story ->
+             intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
+                putExtra("description", story.description)
+                putExtra("name", story.name)
+                putExtra("image", story.photoUrl)
+            }
+            startActivity(intent)
+        }
+
         binding.rvStory.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
             setHasFixedSize(true)
