@@ -28,28 +28,21 @@ class RemoteDataSource @Inject constructor(
     private val db: StoryDatabase,
     private val remoteDataSource : Repository
 ) {
-    fun registerUser(registerRequest: RegisterRequest) = flow<Resource<ServerResponse>> {
+
+    fun registerUser(registerRequest: RegisterRequest) = flow {
         emit(Resource.Loading())
         val response = apiService.registerUser(registerRequest)
-        response.let {
-            if (!it.error) emit(Resource.Success(it))
-            else emit(Resource.Error(it.message))
-        }
+        emit(Resource.Success(response))
     }.catch {
-        Log.d(TAG, "registerUser: ${it.message}")
         emit(Resource.Error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 
 
-    fun loginUser(loginRequest: LoginRequest) = flow<Resource<ServerResponse>> {
+    fun loginUser(loginRequest: LoginRequest) = flow {
         emit(Resource.Loading())
         val response = apiService.loginUser(loginRequest)
-        response.let {
-            if (!it.error) emit(Resource.Success(it))
-            else emit(Resource.Error(it.message))
-        }
+        emit(Resource.Success(response))
     }.catch {
-        Log.d(TAG, "loginUser: ${it.message}")
         emit(Resource.Error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 
