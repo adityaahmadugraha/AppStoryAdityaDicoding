@@ -4,7 +4,8 @@
     <item
         android:id="@+id/logout"
         android:title="@string/logout"
-        app:showAsAction="never"/>
+        app:showAsAction="never"
+        android:icon="@drawable/ic_logout"/>
     <item
         android:id="@+id/location"
         android:title="@string/title_activity_user_maps"

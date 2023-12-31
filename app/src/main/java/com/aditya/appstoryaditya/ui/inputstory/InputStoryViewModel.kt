@@ -24,7 +24,7 @@ class InputStoryViewModel @Inject constructor(
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun tambahStory(
+    fun inputStory(
         token: String,
         file: MultipartBody.Part,
         description: RequestBody,

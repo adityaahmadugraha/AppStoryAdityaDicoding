@@ -3,11 +3,11 @@ package com.aditya.appstoryaditya.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +18,6 @@ import com.aditya.appstoryaditya.ui.detailstory.DetailActivity
 import com.aditya.appstoryaditya.ui.inputstory.InputStoryActivity
 import com.aditya.appstoryaditya.ui.login.LoginActivity
 import com.aditya.appstoryaditya.ui.location.UserLocationActivity
-import com.aditya.appstoryaditya.util.Constant.TAG
 import com.aditya.appstoryaditya.util.Constant.tokenBearer
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,16 +55,6 @@ class MainActivity : AppCompatActivity() {
         showLoading()
 
         supportActionBar?.title = null
-
-    }
-
-    @OptIn(ExperimentalPagingApi::class)
-    private fun getStories() {
-        val token = user?.tokenBearer.toString()
-        viewModel.getStories(token) {
-            Log.d(TAG, "onCreate: $it")
-            mAdapter.submitData(lifecycle, it)
-        }
     }
 
     private fun showLoading() {
@@ -74,10 +63,72 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_item, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.logout -> {
+                showLogoutConfirmationDialog()
+            }
+            R.id.location -> {
+                Intent(this@MainActivity, UserLocationActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
+        }
+        return true
+    }
+
+    private fun showLogoutConfirmationDialog() {
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setTitle("Konfirmasi Logout")
+        builder.setMessage("Apakah Anda yakin ingin keluar?")
+
+        builder.setPositiveButton("Ya") { _, _ ->
+            user?.let { viewModel.logout(it) }
+            Intent(this@MainActivity, LoginActivity::class.java).also {
+                it.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                startActivity(it)
+                finish()
+            }
+        }
+
+        builder.setNegativeButton("Tidak") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun reGetStory() {
+        getStories()
+        setupRecyclerData()
+    }
+
+    private val launcherInsertStory = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == INSERT_RESULT) {
+            reGetStory()
+        }
+    }
+
+    @OptIn(ExperimentalPagingApi::class)
+    private fun getStories() {
+        val token = user?.tokenBearer.toString()
+        viewModel.getStories(token) {
+            mAdapter.submitData(lifecycle, it)
+        }
+    }
+
     private fun setupRecyclerData() {
 
         mAdapter = MainAdapter { story ->
-             intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
+            intent = Intent(this@MainActivity, DetailActivity::class.java).apply {
                 putExtra("description", story.description)
                 putExtra("name", story.name)
                 putExtra("image", story.photoUrl)
@@ -93,45 +144,6 @@ class MainActivity : AppCompatActivity() {
                     mAdapter.retry()
                 }
             )
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_item, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.logout -> {
-                user?.let { viewModel.logout(it) }
-                Intent(this@MainActivity, LoginActivity::class.java).also {
-                    it.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    startActivity(it)
-                }
-
-            }
-            R.id.location -> {
-                Intent(this@MainActivity, UserLocationActivity::class.java).also {
-                    startActivity(it)
-                }
-            }
-
-        }
-
-        return true
-    }
-
-    private fun reGetStory() {
-        getStories()
-        setupRecyclerData()
-    }
-
-    private val launcherInsertStory = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) {
-        if (it.resultCode == INSERT_RESULT) {
-            reGetStory()
         }
     }
 }

@@ -15,7 +15,6 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.title = "Back"
 
-
         getDetail()
     }
 
@@ -29,19 +28,9 @@ class DetailActivity : AppCompatActivity() {
 
         val tvName = binding.tvTitle
         tvName.text = name
-
         Glide.with(this)
             .load(image)
             .into(binding.imgStory)
 
-//        binding.apply {
-//            tvTitle.text = story?.name
-//            tvDescription.text = story?.description
-//            Glide.with(this@DetailActivity)
-//                .load(story?.photoUrl)
-//                .placeholder(this@DetailActivity.createProgress())
-//                .error(android.R.color.darker_gray)
-//                .into(imgStory)
-//        }
     }
 }

@@ -60,6 +60,7 @@ class InputStoryActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
@@ -110,9 +111,11 @@ class InputStoryActivity : AppCompatActivity() {
                 permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
                     getMyLastLocation()
                 }
+
                 permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
                     getMyLastLocation()
                 }
+
                 else -> {}
             }
         }
@@ -160,50 +163,13 @@ class InputStoryActivity : AppCompatActivity() {
     }
 
     private fun showLoading() {
-        viewModel.isLoading.observe(this){
+        viewModel.isLoading.observe(this) {
             binding.apply {
                 progressBar.isVisible = it
                 btnUpload.isEnabled = !it
             }
         }
     }
-
-//    private fun uploadImage() {
-//        val description = binding.etDescription.text.toString()
-//        if(validateInput(description)){
-//            val file = reduceFileImage(getFile as File)
-//
-//            val token = user?.tokenBearer.toString()
-//            val desc = description.toRequestBody("text/plain".toMediaType())
-//            val lat = if(location != null) location?.latitude.toString().toRequestBody("text/plain". toMediaType()) else null
-//            val lon = if(location != null) location?.longitude.toString().toRequestBody("text/plain". toMediaType()) else null
-//            val imageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-//            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-//                "photo",
-//                file.name,
-//                imageFile
-//            )
-//
-//            viewModel.tambahStory(
-//                token = token,
-//                file = imageMultipart,
-//                description = desc,
-//                lat = lat,
-//                lon = lon
-//            ){
-//                if(!it.error){
-//                    Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
-//                    Intent().apply {
-//                        setResult(INSERT_RESULT, this)
-//                        finish()
-//                    }
-//                }else{
-//                    Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        }
-//
-//    }
 
     private fun uploadImage() {
         val description = binding.etDescription.text.toString()
@@ -213,9 +179,11 @@ class InputStoryActivity : AppCompatActivity() {
             val token = user?.tokenBearer.toString()
             val desc = description.toRequestBody("text/plain".toMediaType())
             val lat =
-                if (location != null) location?.latitude.toString().toRequestBody("text/plain".toMediaType()) else null
+                if (location != null) location?.latitude.toString()
+                    .toRequestBody("text/plain".toMediaType()) else null
             val lon =
-                if (location != null) location?.longitude.toString().toRequestBody("text/plain".toMediaType()) else null
+                if (location != null) location?.longitude.toString()
+                    .toRequestBody("text/plain".toMediaType()) else null
             val imageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
@@ -223,7 +191,7 @@ class InputStoryActivity : AppCompatActivity() {
                 imageFile
             )
 
-            viewModel.tambahStory(
+            viewModel.inputStory(
                 token = token,
                 file = imageMultipart,
                 description = desc,
@@ -242,14 +210,19 @@ class InputStoryActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun validateInput(description: String): Boolean {
-        if(description.isEmpty()){
+        if (description.isEmpty()) {
             binding.ilDescription.isErrorEnabled = true
             binding.ilDescription.error = getString(R.string.must_not_empty)
             return false
         }
-        if(getFile == null){
-            Toast.makeText(this@InputStoryActivity, getString(R.string.choose_photo_first), Toast.LENGTH_SHORT).show()
+        if (getFile == null) {
+            Toast.makeText(
+                this@InputStoryActivity,
+                getString(R.string.choose_photo_first),
+                Toast.LENGTH_SHORT
+            ).show()
             return false
         }
         return true
@@ -269,7 +242,7 @@ class InputStoryActivity : AppCompatActivity() {
             intent.resolveActivity(packageManager)
 
             Constant.createTempFile(application).also {
-                val photoUri : Uri = FileProvider.getUriForFile(
+                val photoUri: Uri = FileProvider.getUriForFile(
                     this@InputStoryActivity,
                     "com.aditya.appstoryaditya",
                     it
@@ -285,12 +258,12 @@ class InputStoryActivity : AppCompatActivity() {
     private var getFile: File? = null
     private val launcherIntentCamera = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ){
-        if(it.resultCode == RESULT_OK) {
+    ) {
+        if (it.resultCode == RESULT_OK) {
             val myFile = File(currentPhotoPath)
             getFile = myFile
 
-            val result =  BitmapFactory.decodeFile(myFile.path)
+            val result = BitmapFactory.decodeFile(myFile.path)
 
             binding.imgStory.setImageBitmap(result)
         }
@@ -299,7 +272,7 @@ class InputStoryActivity : AppCompatActivity() {
     private val launcherIntentGallery = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
-        if(result.resultCode == RESULT_OK){
+        if (result.resultCode == RESULT_OK) {
             val selectedImg: Uri = result.data?.data as Uri
             val myFile = uriToFile(selectedImg, this@InputStoryActivity)
             getFile = myFile

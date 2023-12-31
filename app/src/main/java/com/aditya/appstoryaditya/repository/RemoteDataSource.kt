@@ -83,25 +83,6 @@ class RemoteDataSource @Inject constructor(
         emit(Resource.error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 
-
-//    fun inputStory(
-//        token: String,
-//        file: MultipartBody.Part,
-//        description: RequestBody,
-//        lat: RequestBody? = null,
-//        lon: RequestBody? = null
-//    ) = flow<Resource<ServerResponse>> {
-//        emit(Resource.loading())
-//        val response = apiService.inputStory(token, file, description, lat, lon)
-//        response.let {
-//            if (!it.error) emit(Resource.success(it))
-//            else emit(Resource.error(it.message))
-//        }
-//    }.catch {
-//        emit(Resource.error(it.message ?: ""))
-//    }.flowOn(Dispatchers.IO)
-
-
     fun inputStory(
         token: String,
         file: MultipartBody.Part,
