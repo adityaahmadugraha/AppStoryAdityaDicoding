@@ -7,11 +7,11 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.aditya.appstoryaditya.api.ApiService
-import com.aditya.appstoryaditya.models.ServerResponse
-import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.database.StoryDatabase
 import com.aditya.appstoryaditya.models.LoginRequest
 import com.aditya.appstoryaditya.models.RegisterRequest
+import com.aditya.appstoryaditya.models.ServerResponse
+import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -25,7 +25,8 @@ import javax.inject.Inject
 
 class StoryAppRepository @Inject constructor(
     private val apiService: ApiService,
-    private val db: StoryDatabase
+    private val db: StoryDatabase,
+    private val remoteDataSource : RemoteDataSource
 ) {
     fun registerUser(registerRequest: RegisterRequest) = flow<Resource<ServerResponse>> {
         emit(Resource.loading())
@@ -83,21 +84,42 @@ class StoryAppRepository @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
 
+//    fun inputStory(
+//        token: String,
+//        file: MultipartBody.Part,
+//        description: RequestBody,
+//        lat: RequestBody? = null,
+//        lon: RequestBody? = null
+//    ) = flow<Resource<ServerResponse>> {
+//        emit(Resource.loading())
+//        val response = apiService.inputStory(token, file, description, lat, lon)
+//        response.let {
+//            if (!it.error) emit(Resource.success(it))
+//            else emit(Resource.error(it.message))
+//        }
+//    }.catch {
+//        emit(Resource.error(it.message ?: ""))
+//    }.flowOn(Dispatchers.IO)
+
+
     fun inputStory(
         token: String,
         file: MultipartBody.Part,
         description: RequestBody,
         lat: RequestBody? = null,
         lon: RequestBody? = null
-    ) = flow<Resource<ServerResponse>> {
+    ): Flow<Resource<ServerResponse>> = flow {
         emit(Resource.loading())
-        val response = apiService.inputStory(token, file, description, lat, lon)
-        response.let {
-            if (!it.error) emit(Resource.success(it))
-            else emit(Resource.error(it.message))
+        try {
+            val response = remoteDataSource.inputStory(token, file, description, lat, lon)
+            if (!response.error) {
+                emit(Resource.success(response))
+            } else {
+                emit(Resource.error(response.message))
+            }
+        } catch (e: Exception) {
+            emit(Resource.error("An error occurred"))
         }
-    }.catch {
-        emit(Resource.error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 
 }

@@ -168,15 +168,54 @@ class InputStoryActivity : AppCompatActivity() {
         }
     }
 
+//    private fun uploadImage() {
+//        val description = binding.etDescription.text.toString()
+//        if(validateInput(description)){
+//            val file = reduceFileImage(getFile as File)
+//
+//            val token = user?.tokenBearer.toString()
+//            val desc = description.toRequestBody("text/plain".toMediaType())
+//            val lat = if(location != null) location?.latitude.toString().toRequestBody("text/plain". toMediaType()) else null
+//            val lon = if(location != null) location?.longitude.toString().toRequestBody("text/plain". toMediaType()) else null
+//            val imageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
+//            val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
+//                "photo",
+//                file.name,
+//                imageFile
+//            )
+//
+//            viewModel.tambahStory(
+//                token = token,
+//                file = imageMultipart,
+//                description = desc,
+//                lat = lat,
+//                lon = lon
+//            ){
+//                if(!it.error){
+//                    Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
+//                    Intent().apply {
+//                        setResult(INSERT_RESULT, this)
+//                        finish()
+//                    }
+//                }else{
+//                    Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//        }
+//
+//    }
+
     private fun uploadImage() {
         val description = binding.etDescription.text.toString()
-        if(validateInput(description)){
+        if (validateInput(description)) {
             val file = reduceFileImage(getFile as File)
 
             val token = user?.tokenBearer.toString()
             val desc = description.toRequestBody("text/plain".toMediaType())
-            val lat = if(location != null) location?.latitude.toString().toRequestBody("text/plain". toMediaType()) else null
-            val lon = if(location != null) location?.longitude.toString().toRequestBody("text/plain". toMediaType()) else null
+            val lat =
+                if (location != null) location?.latitude.toString().toRequestBody("text/plain".toMediaType()) else null
+            val lon =
+                if (location != null) location?.longitude.toString().toRequestBody("text/plain".toMediaType()) else null
             val imageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
@@ -190,21 +229,19 @@ class InputStoryActivity : AppCompatActivity() {
                 description = desc,
                 lat = lat,
                 lon = lon
-            ){
-                if(!it.error){
+            ) {
+                if (!it.error) {
                     Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
                     Intent().apply {
                         setResult(INSERT_RESULT, this)
                         finish()
                     }
-                }else{
+                } else {
                     Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
-
     }
-
     private fun validateInput(description: String): Boolean {
         if(description.isEmpty()){
             binding.ilDescription.isErrorEnabled = true

@@ -30,10 +30,10 @@ class InputStoryViewModel @Inject constructor(
         description: RequestBody,
         lat: RequestBody? = null,
         lon: RequestBody? = null,
-        onSuccess : (ServerResponse) -> Unit
+        onSuccess: (ServerResponse) -> Unit
     ) = viewModelScope.launch {
-        repository.inputStory(token, file, description, lat, lon).collect{ response ->
-            when(response){
+        repository.inputStory(token, file, description, lat, lon).collect { response ->
+        when(response){
                 is Resource.Loading -> {
                     _isLoading.value = true
                 }
