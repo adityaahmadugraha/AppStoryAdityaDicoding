@@ -34,11 +34,9 @@ class UserPreference (
         }
     }
 
-    suspend fun deleteUser(user: User){
+    suspend fun deleteUser() {
         userDataStore.edit { preferences ->
-            preferences[KEY_USERID] = ""
-            preferences[KEY_NAME] = ""
-            preferences[KEY_TOKEN] = ""
+            preferences.clear()
         }
     }
 }

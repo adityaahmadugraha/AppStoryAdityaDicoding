@@ -42,7 +42,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun logout(user: User) = viewModelScope.launch {
-        userPreference.deleteUser(user)
+        userPreference.deleteUser()
     }
 
 }
