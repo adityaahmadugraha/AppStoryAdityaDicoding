@@ -64,15 +64,7 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun getUser(
-        user : (User) -> Unit
-    ) = viewModelScope.launch {
-        preference.getUser().collect{
-            user(it)
-        }
-    }
-
-//    fun getUser() = repository.getUser().asLiveData()
+    fun getUser() = repository.getUser().asLiveData()
 
 
 }
