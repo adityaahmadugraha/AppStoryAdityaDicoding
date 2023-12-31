@@ -10,7 +10,7 @@ import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.models.LoginRequest
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.models.UserPreference
-import com.aditya.appstoryaditya.repository.StoryAppRepository
+import com.aditya.appstoryaditya.repository.RemoteDataSource
 import com.aditya.appstoryaditya.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val repository: StoryAppRepository,
+    private val repository: RemoteDataSource,
     private val preference: UserPreference
 ) : ViewModel() {
 

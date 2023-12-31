@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.models.UserPreference
-import com.aditya.appstoryaditya.repository.StoryAppRepository
+import com.aditya.appstoryaditya.repository.RemoteDataSource
 import com.aditya.appstoryaditya.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserLocationViewModel @Inject constructor(
-    private val repository: StoryAppRepository,
+    private val repository: RemoteDataSource,
     private val userPref: UserPreference
 ) : ViewModel() {
 

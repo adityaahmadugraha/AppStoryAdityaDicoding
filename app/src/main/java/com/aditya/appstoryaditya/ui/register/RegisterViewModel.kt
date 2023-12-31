@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aditya.appstoryaditya.models.RegisterRequest
-import com.aditya.appstoryaditya.repository.StoryAppRepository
+import com.aditya.appstoryaditya.repository.RemoteDataSource
 import com.aditya.appstoryaditya.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
-    private val repository: StoryAppRepository
+    private val repository: RemoteDataSource
 ) : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()

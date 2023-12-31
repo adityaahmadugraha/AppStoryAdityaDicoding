@@ -9,14 +9,14 @@ import androidx.paging.PagingData
 import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.models.UserPreference
-import com.aditya.appstoryaditya.repository.StoryAppRepository
+import com.aditya.appstoryaditya.repository.RemoteDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repository: StoryAppRepository,
+    private val repository: RemoteDataSource,
     private val userPreference: UserPreference
 ) : ViewModel() {
 
