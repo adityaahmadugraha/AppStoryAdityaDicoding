@@ -61,6 +61,12 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+        viewModel.getUser { user ->
+            if(user.token.isNotEmpty()){
+                intentToMain()
+            }
+        }
+
         playAnimation()
 
     }

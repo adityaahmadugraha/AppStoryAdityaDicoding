@@ -21,7 +21,7 @@ object Constant {
 
     val KEY_USERID = stringPreferencesKey("userId")
     val KEY_NAME = stringPreferencesKey("name")
-    val KEY_TOKEN = stringPreferencesKey("name")
+    val KEY_TOKEN = stringPreferencesKey("token")
 
     const val TAG = "Response:::"
 

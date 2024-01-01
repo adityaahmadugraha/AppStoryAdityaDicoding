@@ -19,12 +19,11 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
-    private val repository: AppRepository,
     private val userPreference: UserPreference
 ) : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading : LiveData<Boolean> = _isLoading
+    val isLoading: LiveData<Boolean> = _isLoading
 
     @ExperimentalPagingApi
     fun getStories(
@@ -39,14 +38,14 @@ class MainViewModel @Inject constructor(
     fun getUser(
         user: (User) -> Unit
     ) = viewModelScope.launch {
-        userPreference.getUser().collect{
+        userPreference.getUser().collect {
             user(it)
         }
     }
 
 
     fun logout() = viewModelScope.launch {
-        repository.deleteUser()
+        userPreference.deleteUser()
     }
 
 }

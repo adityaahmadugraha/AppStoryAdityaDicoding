@@ -1,14 +1,13 @@
 package com.aditya.appstoryaditya.ui.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,8 +16,8 @@ import com.aditya.appstoryaditya.databinding.ActivityMainBinding
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.ui.detailstory.DetailActivity
 import com.aditya.appstoryaditya.ui.inputstory.InputStoryActivity
-import com.aditya.appstoryaditya.ui.login.LoginActivity
 import com.aditya.appstoryaditya.ui.location.UserLocationActivity
+import com.aditya.appstoryaditya.ui.login.LoginActivity
 import com.aditya.appstoryaditya.util.Constant.tokenBearer
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -114,8 +113,8 @@ class MainActivity : AppCompatActivity() {
 
     private val launcherInsertStory = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) {
-        if (it.resultCode == INSERT_RESULT) {
+    ){
+        if(it.resultCode == INSERT_RESULT){
             reGetStory()
         }
     }
