@@ -36,15 +36,14 @@ class MainViewModel @Inject constructor(
         }
     }
 
-//    fun getUser(
-//        user: (User) -> Unit
-//    ) = viewModelScope.launch {
-//        userPreference.getUser().collect{
-//            user(it)
-//        }
-//    }
+    fun getUser(
+        user: (User) -> Unit
+    ) = viewModelScope.launch {
+        userPreference.getUser().collect{
+            user(it)
+        }
+    }
 
-    fun getUser() = repository.getUser().asLiveData()
 
     fun logout() = viewModelScope.launch {
         repository.deleteUser()

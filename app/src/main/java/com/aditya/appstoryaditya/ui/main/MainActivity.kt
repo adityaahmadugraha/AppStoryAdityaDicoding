@@ -3,6 +3,7 @@ package com.aditya.appstoryaditya.ui.main
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityMainBinding
-
+    private var user: User? = null
     private lateinit var mAdapter: MainAdapter
     private val viewModel: MainViewModel by viewModels()
 
@@ -40,7 +41,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        viewModel.getUser()
+        viewModel.getUser {
+            user = it
+        }
         binding.fabTambah.setOnClickListener {
             Intent(this@MainActivity, InputStoryActivity::class.java).also {
                 launcherInsertStory.launch(it)
@@ -86,11 +89,13 @@ class MainActivity : AppCompatActivity() {
         builder.setMessage("Apakah Anda yakin ingin keluar?")
 
         builder.setPositiveButton("Ya") { _, _ ->
-            viewModel.getUser().let { viewModel.logout() }
-            Intent(this@MainActivity, LoginActivity::class.java).also {
-                it.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                startActivity(it)
-                finish()
+            viewModel.getUser {
+                viewModel.logout()
+                Intent(this@MainActivity, LoginActivity::class.java).also {
+                    it.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                    startActivity(it)
+                    finish()
+                }
             }
         }
 
@@ -117,11 +122,12 @@ class MainActivity : AppCompatActivity() {
 
     @OptIn(ExperimentalPagingApi::class)
     private fun getStories() {
-        val token = viewModel.getUser().toString()
+        val token = user?.tokenBearer.toString()
         viewModel.getStories(token) {
             mAdapter.submitData(lifecycle, it)
         }
     }
+
 
     private fun setupRecyclerData() {
         mAdapter = MainAdapter { story ->
