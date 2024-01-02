@@ -8,11 +8,13 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ActivityLoginBinding
 import com.aditya.appstoryaditya.models.LoginRequest
+import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.ui.main.MainActivity
 import com.aditya.appstoryaditya.ui.register.RegisterActivity
 import com.aditya.appstoryaditya.util.Resource
@@ -35,7 +37,6 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.apply {
-
             tvRegister.setOnClickListener {
                 Intent(this@LoginActivity, RegisterActivity::class.java).also {
                     startActivity(it)
@@ -48,10 +49,9 @@ class LoginActivity : AppCompatActivity() {
             btnLogin.setOnClickListener {
                 val email = etEmail.text.toString()
                 val password = etPassword.text.toString()
-                val loginRequest = LoginRequest(email, password)
 
                 if (!isError) {
-                    loginUser(loginRequest)
+                    loginUser(email, password)
                 }
             }
 
@@ -59,16 +59,51 @@ class LoginActivity : AppCompatActivity() {
             imageView.contentDescription =
                 getString(R.string.image_description, getString(R.string.login))
 
-        }
 
-        viewModel.getUser { user ->
-            if(user.token.isNotEmpty()){
-                intentToMain()
+            viewModel.getUser { user ->
+                if(user.token.isNotEmpty()){
+                    intentToMain()
+                }
             }
+
         }
 
         playAnimation()
+    }
+    private fun loginUser(email: String, password: String) {
+       viewModel.loginUser(LoginRequest(email, password)).observe(this@LoginActivity) {result ->
 
+       binding.apply {
+           when (result) {
+               is Resource.Loading -> {
+                   progressBar.visibility = VISIBLE
+               }
+               is Resource.Success -> {
+                   val dataUser = result.data.loginResult
+                   if (dataUser != null) {
+                       viewModel.saveUser(
+                           User(
+                               dataUser.userId,
+                               dataUser.name,
+                               result.data.loginResult.token
+                           )
+                       )
+                   }
+                   progressBar.visibility = GONE
+               }
+
+               is Resource.Error -> {
+                   Toast.makeText(
+                       this@LoginActivity,
+                       getString(R.string.terjadi_kesalahan),
+                       Toast.LENGTH_SHORT
+                   ).show()
+                   progressBar.visibility = GONE
+               }
+           }
+       }
+
+       }
     }
 
     private fun intentToMain() {
@@ -78,29 +113,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun loginUser(loginRequest: LoginRequest) {
-        viewModel.loginUser(loginRequest).observe(this@LoginActivity) { result ->
-            binding.apply {
-                when (result) {
-
-                    is Resource.Loading -> {
-                        progressBar.visibility = VISIBLE
-                    }
-
-                    is Resource.Success -> {
-                        progressBar.visibility = GONE
-                        intentToMain()
-                    }
-
-                    is Resource.Error -> {
-                        progressBar.visibility = GONE
-                        btnLogin.isEnabled
-                    }
-                }
-            }
-
-        }
-    }
 
     private fun playAnimation() {
         binding.apply {

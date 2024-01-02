@@ -15,19 +15,19 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
 
     private val repository: AppRepository,
-    private val preference: UserPreference
+    private val userPreference: UserPreference
 ) : ViewModel() {
-
-    fun loginUser(request: LoginRequest) = repository.loginUser(request).asLiveData()
 
     fun saveUser(user: User) = viewModelScope.launch {
         repository.saveUser(user)
     }
 
+    fun loginUser(request: LoginRequest) = repository.loginUser(request).asLiveData()
+
     fun getUser(
         user : (User) -> Unit
     ) = viewModelScope.launch {
-        preference.getUser().collect{
+        userPreference.getUser().collect{
             user(it)
         }
     }

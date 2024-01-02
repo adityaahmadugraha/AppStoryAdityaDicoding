@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.getUser {
             user = it
         }
+
         binding.fabTambah.setOnClickListener {
             Intent(this@MainActivity, InputStoryActivity::class.java).also {
                 launcherInsertStory.launch(it)

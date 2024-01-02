@@ -11,7 +11,8 @@ import kotlinx.coroutines.flow.map
 
 private val Context.dataStore by preferencesDataStore("settings")
 
-class UserPreference(context: Context) {
+class UserPreference(context: Context)
+{
     private val userDataStore = context.dataStore
 
     fun getUser(): Flow<User> {
