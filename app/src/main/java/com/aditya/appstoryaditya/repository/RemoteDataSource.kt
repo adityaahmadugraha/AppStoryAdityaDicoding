@@ -66,15 +66,16 @@ class RemoteDataSource @Inject constructor(
         location: Int?
     ) = flow<Resource<ServerResponse>> {
         emit(Resource.Loading())
-        val response = apiService.getAllStories(token, location = location)
+        val response = apiService.getStories(token, location = location)
         response.let {
             if (!it.error) emit(Resource.Success(it))
             else emit(Resource.Error(it.message))
         }
     }.catch {
-        Log.d(TAG, "getAllStories: ${it.message}")
         emit(Resource.Error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
+
+
 
     fun inputStory(
         token: String,

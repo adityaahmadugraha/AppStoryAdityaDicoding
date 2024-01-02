@@ -90,27 +90,18 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-private fun getMyLocation() {
-    if (ContextCompat.checkSelfPermission(
-            this.applicationContext,
-            android.Manifest.permission.ACCESS_FINE_LOCATION
-        ) == PackageManager.PERMISSION_GRANTED
-    ) {
-        mMap.isMyLocationEnabled = true
+    private fun getMyLocation() {
+        if (ContextCompat.checkSelfPermission(
+                this.applicationContext,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            mMap.isMyLocationEnabled = true
 
-        mMap.setOnMyLocationButtonClickListener {
-            val userLocation = mMap.myLocation
-            if (userLocation != null) {
-                val userLatLng = LatLng(userLocation.latitude, userLocation.longitude)
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLatLng, 15f))
-            }
-            true
+        } else {
+            requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }
-    } else {
-        requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
     }
-}
-
 
     private fun addUserMarker() {
         viewModel.getUser {
@@ -181,18 +172,22 @@ private fun getMyLocation() {
                 mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
                 true
             }
+
             R.id.satellite_type -> {
                 mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
                 true
             }
+
             R.id.terrain_type -> {
                 mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
                 true
             }
+
             R.id.hybrid_type -> {
                 mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
                 true
             }
+
             else -> {
                 super.onOptionsItemSelected(item)
             }

@@ -50,7 +50,7 @@ class StoryRemoteMediator(
         }
 
         return try {
-            val responseData = apiService.getAllStories(
+            val responseData = apiService.getStories(
                 token,
                 page = page,
                 size = state.config.pageSize
