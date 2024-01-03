@@ -8,6 +8,7 @@
     <string name="image_description">Gambar %1$s</string>
     <string name="login">Login</string>
     <string name="terjadi_kesalahan">Terjadi kesalahan, coba lagi</string>
+    <string name="sukses">Story Berhasil Ditambahkan</string>
     <string name="email">Email</string>
     <string name="email_required">Email is required</string>
     <string name="invalid_email">Invalid email address</string>
@@ -47,4 +48,6 @@
     <string name="title_activity_user_maps">User Location</string>
     <string name="marker_in">Marker in %1$s</string>
     <string name="location_not_found">Lokasi Tidak Diketahui</string>
+    <string name="pick_photo_first">Pilih foto dulu</string>
+    <string name="tambahkan_story">Tambahkan Story</string>
 </resources>

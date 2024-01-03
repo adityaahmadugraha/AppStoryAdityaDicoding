@@ -8,30 +8,76 @@
     tools:context=".ui.detailstory.DetailActivity">
 
     <ImageView
-        android:id="@+id/img_story"
-        android:layout_width="0dp"
-        android:layout_height="300dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/image_description"
-        android:scaleType="fitXY"
-        android:transitionName="@string/image"
+        android:id="@+id/ic_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/opensansbold"
+        android:text="@string/detail_story"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_story"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/image_description"
+                android:scaleType="fitXY"
+                android:transitionName="@string/image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:textColor="@color/dicoding"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/opensansbold"
-        android:textSize="24sp"
+        android:textColor="@color/dicoding"
+        android:textSize="22sp"
         android:transitionName="@string/name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_story"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:text="@string/name" />
 
     <TextView
@@ -42,6 +88,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/opensanscondensedbold"
+        android:text="@string/deskripsi"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

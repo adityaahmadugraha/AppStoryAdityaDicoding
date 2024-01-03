@@ -32,13 +32,20 @@ interface ApiService {
         @Query("location") location: Int? = null
     ): ServerResponse
 
-    @Multipart
+//    @Multipart
+//    @POST("stories")
+//    suspend fun inputStory(
+//        @Header("Authorization") header: String,
+//        @Part file: MultipartBody.Part,
+//        @Part("description") description: RequestBody,
+//        @Part("lat") lat: RequestBody? = null,
+//        @Part("lon") lon: RequestBody? = null
+//    ): ServerResponse
+
+
     @POST("stories")
-    suspend fun inputStory(
-        @Header("Authorization") header: String,
-        @Part file: MultipartBody.Part,
-        @Part("description") description: RequestBody,
-        @Part("lat") lat: RequestBody? = null,
-        @Part("lon") lon: RequestBody? = null
+    suspend fun insertStori(
+        @Header("Authorization") token: String,
+        @Body body: RequestBody
     ): ServerResponse
 }

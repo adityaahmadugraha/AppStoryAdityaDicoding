@@ -12,10 +12,10 @@ import androidx.core.view.isVisible
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditya.appstoryaditya.R
+import com.aditya.appstoryaditya.api.ActivityAddStory
 import com.aditya.appstoryaditya.databinding.ActivityMainBinding
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.ui.detailstory.DetailActivity
-import com.aditya.appstoryaditya.ui.inputstory.InputStoryActivity
 import com.aditya.appstoryaditya.ui.location.UserLocationActivity
 import com.aditya.appstoryaditya.ui.login.LoginActivity
 import com.aditya.appstoryaditya.util.Constant.tokenBearer
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.fabTambah.setOnClickListener {
-            Intent(this@MainActivity, InputStoryActivity::class.java).also {
+            Intent(this@MainActivity, ActivityAddStory::class.java).also {
                 launcherInsertStory.launch(it)
             }
         }

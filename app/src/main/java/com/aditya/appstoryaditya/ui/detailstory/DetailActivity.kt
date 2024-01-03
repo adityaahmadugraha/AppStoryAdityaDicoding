@@ -1,9 +1,11 @@
 package com.aditya.appstoryaditya.ui.detailstory
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.aditya.appstoryaditya.databinding.ActivityDetailBinding
+import com.aditya.appstoryaditya.ui.main.MainActivity
 import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
@@ -13,9 +15,13 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.title = "Back"
-
+        supportActionBar?.hide()
         getDetail()
+
+        binding.icBack.setOnClickListener {
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun getDetail() {

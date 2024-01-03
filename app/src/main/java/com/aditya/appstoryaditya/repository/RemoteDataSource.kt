@@ -1,7 +1,5 @@
 package com.aditya.appstoryaditya.repository
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -18,17 +16,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import javax.inject.Inject
-
 
 class RemoteDataSource @Inject constructor(
     private val apiService: ApiService,
     private val db: StoryDatabase,
-    private val remoteDataSource : Repository
-) {
 
+) {
     fun registerUser(registerRequest: RegisterRequest) = flow {
         emit(Resource.Loading())
         val response = apiService.registerUser(registerRequest)
@@ -76,25 +71,18 @@ class RemoteDataSource @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
 
-
-    fun inputStory(
+    fun insertStori(
         token: String,
-        file: MultipartBody.Part,
-        description: RequestBody,
-        lat: RequestBody? = null,
-        lon: RequestBody? = null
-    ): Flow<Resource<ServerResponse>> = flow {
+        requestBody: RequestBody
+    ) = flow<Resource<ServerResponse>> {
         emit(Resource.Loading())
-        try {
-            val response = remoteDataSource.inputStory(token, file, description, lat, lon)
-            if (!response.error) {
-                emit(Resource.Success(response))
-            } else {
-                emit(Resource.Error(response.message))
-            }
-        } catch (e: Exception) {
-            emit(Resource.Error("An error occurred"))
+        val response = apiService.insertStori(token, requestBody)
+        response.let {
+            if (!it.error) emit(Resource.Success(it))
+            else emit(Resource.Error("Data Tidak Ditemuan"))
         }
+    }.catch {
+        emit(Resource.Error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 
 }
