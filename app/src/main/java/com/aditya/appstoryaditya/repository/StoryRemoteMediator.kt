@@ -79,13 +79,13 @@ class StoryRemoteMediator(
 
     private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Story>): RemoteKeys? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { data ->
-            db.remoteKeysDao().getRemoteKeysId(data.id.toString())
+            db.remoteKeysDao().getRemoteKeysId(data.id)
         }
     }
 
     private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Story>): RemoteKeys? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()?.let { data ->
-            db.remoteKeysDao().getRemoteKeysId(data.id.toString())
+            db.remoteKeysDao().getRemoteKeysId(data.id)
         }
     }
 

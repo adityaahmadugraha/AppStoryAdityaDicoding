@@ -3,7 +3,6 @@ package com.aditya.appstoryaditya.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
@@ -19,7 +18,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
-    private val userPreference: UserPreference
+    private val userPreference: UserPreference,
+    private val repository: AppRepository
 ) : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
@@ -43,9 +43,8 @@ class MainViewModel @Inject constructor(
         }
     }
 
-
     fun logout() = viewModelScope.launch {
-        userPreference.deleteUser()
+        repository.deleteUser()
     }
 
 }

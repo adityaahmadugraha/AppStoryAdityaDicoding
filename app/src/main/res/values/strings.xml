@@ -1,11 +1,10 @@
 <resources>
     <string name="app_name">AppStoryAditya</string>
-    <string name="enter_password">Masukkan Password</string>
-    <string name="enter_email">Masukkan Email</string>
-    <string name="must_not_empty">Tidak boleh kosong</string>
-    <string name="more_than_character">Harus lebih dari 8 karakter</string>
-    <string name="not_type_email">Format email salah (@)</string>
-    <string name="image_description">Gambar %1$s</string>
+    <string name="masukan_password">Masukkan Password</string>
+    <string name="masukan_email">Masukkan Email</string>
+    <string name="tidak_boleh_kosong">Tidak boleh kosong</string>
+    <string name="harus_lebih_8_karakter">Harus lebih dari 8 karakter</string>
+    <string name="format_email_salah">Format email salah (@)</string>
     <string name="login">Login</string>
     <string name="terjadi_kesalahan">Terjadi kesalahan, coba lagi</string>
     <string name="sukses">Story Berhasil Ditambahkan</string>
@@ -13,14 +12,14 @@
     <string name="email_required">Email is required</string>
     <string name="invalid_email">Invalid email address</string>
     <string name="password">Password</string>
-    <string name="dont_have_account">Belum punya akun? </string>
+    <string name="belum_punya_akun">Belum punya akun? </string>
     <string name="register">Register</string>
     <string name="name">Nama</string>
     <string name="back">Klik Disini Untuk Kembali</string>
     <string name="enter_name">Masukkan nama</string>
     <string name="already_have_account">Sudah punya akun?</string>
     <string name="welcome">Selamat datang %1$s !</string>
-    <string name="date">11 September 2023</string>
+    <string name="date">1 Januari 2024</string>
     <string name="deskripsi">Lorem Ipsum 20</string>
     <string name="add_story">Tambah sebuah story</string>
     <string name="tgl_ungah">di bagikan tanggal %1$s</string>
@@ -50,4 +49,8 @@
     <string name="location_not_found">Lokasi Tidak Diketahui</string>
     <string name="pick_photo_first">Pilih foto dulu</string>
     <string name="tambahkan_story">Tambahkan Story</string>
+    <string name="invalid_domain">Domain tidak valid. Harap gunakan domain yang berakhir dengan ".com".</string>
+    <string name="invalid_email_format">Format email tidak valid. Harap masukkan alamat email dengan benar.</string>
+
+
 </resources>

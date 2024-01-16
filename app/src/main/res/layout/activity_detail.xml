@@ -23,13 +23,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/opensansbold"
+        android:fontFamily="@font/poppinsblack"
         android:text="@string/detail_story"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinssembiold"
+        android:textColor="@color/dicoding"
+        android:textSize="18sp"
+        android:transitionName="@string/name"
+        app:layout_constraintStart_toStartOf="@+id/ic_back"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:text="@string/name" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -41,7 +53,7 @@
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -52,7 +64,6 @@
                 android:layout_width="0dp"
                 android:layout_height="300dp"
                 android:adjustViewBounds="true"
-                android:contentDescription="@string/image_description"
                 android:scaleType="fitXY"
                 android:transitionName="@string/image"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -67,31 +78,31 @@
 
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/tv_tngal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/opensansbold"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:maxLength="10"
+        android:text="@string/date"
+        android:textSize="12sp"
         android:textColor="@color/dicoding"
-        android:textSize="22sp"
-        android:transitionName="@string/name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        tools:text="@string/name" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/tv_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:fontFamily="@font/opensanscondensedbold"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/deskripsi"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_tngal" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

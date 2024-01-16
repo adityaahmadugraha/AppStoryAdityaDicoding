@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".api.ActivityAddStory">
+    tools:context=".ui.add.ActivityAddStory">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/opensansbold"
+            android:fontFamily="@font/poppinsextrabold"
             android:text="@string/tambahkan_story"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/button"
-            android:fontFamily="@font/opensanscondensedmedium"
+            android:fontFamily="@font/poppinssembiold"
             android:text="@string/camera"
             app:cornerRadius="32dp"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/button"
-            android:fontFamily="@font/opensanscondensedmedium"
+            android:fontFamily="@font/poppinssembiold"
             android:text="@string/gallery"
             app:cornerRadius="32dp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_camera"
@@ -102,8 +102,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_description"
                 android:layout_width="match_parent"
+                android:textSize="12sp"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/opensanscondensedmedium" />
+                android:fontFamily="@font/poppins_medium" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -112,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:backgroundTint="@color/dicoding"
-            android:fontFamily="@font/opensanscondensedmedium"
+            android:fontFamily="@font/poppinssembiold"
             android:text="@string/upload"
             app:cornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="@+id/il_description"

@@ -56,10 +56,6 @@ class LoginActivity : AppCompatActivity() {
             }
 
 
-            imageView.contentDescription =
-                getString(R.string.image_description, getString(R.string.login))
-
-
             viewModel.getUser { user ->
                 if(user.token.isNotEmpty()){
                     intentToMain()

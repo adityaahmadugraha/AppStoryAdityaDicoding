@@ -24,26 +24,27 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/opensansbold"
-        android:text="@string/login"
-        android:textSize="25sp"
         android:alpha="0"
-        tools:alpha="1"
+        android:fontFamily="@font/poppinsextrabold"
+        android:textSize="24sp"
+        android:text="@string/login"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:alpha="1" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/opensanscondensedmedium"
+        android:alpha="0"
+        android:fontFamily="@font/poppinssembiold"
         android:labelFor="@id/et_email"
         android:text="@string/email"
-        android:alpha="0"
-        tools:alpha="1"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:alpha="1" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/il_email"
@@ -52,17 +53,18 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:alpha="0"
-        tools:alpha="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:alpha="1">
 
         <com.aditya.appstoryaditya.costumview.Email
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/opensanscondensedmedium"
-            android:inputType="textEmailAddress" />
+            android:fontFamily="@font/poppins_medium"
+            android:inputType="textEmailAddress"
+            android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -70,13 +72,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/opensanscondensedmedium"
+        android:alpha="0"
+        android:fontFamily="@font/poppinssembiold"
         android:labelFor="@id/et_email"
         android:text="@string/password"
-        android:alpha="0"
-        tools:alpha="1"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/il_email"
-        app:layout_constraintTop_toBottomOf="@+id/il_email" />
+        app:layout_constraintTop_toBottomOf="@+id/il_email"
+        tools:alpha="1" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/il_password"
@@ -85,16 +88,17 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:alpha="0"
-        tools:alpha="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:alpha="1">
 
         <com.aditya.appstoryaditya.costumview.Password
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fontFamily="@font/opensanscondensedmedium" />
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -104,15 +108,15 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/opensanscondensedmedium"
+        android:alpha="0"
+        android:backgroundTint="@color/dicoding"
+        android:fontFamily="@font/poppinssembiold"
         android:text="@string/login"
         android:textAllCaps="false"
-        android:backgroundTint="@color/dicoding"
-        android:alpha="0"
-        tools:alpha="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/il_password" />
+        app:layout_constraintTop_toBottomOf="@+id/il_password"
+        tools:alpha="1" />
 
     <TextView
         android:id="@+id/textView4"
@@ -120,8 +124,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:alpha="0"
+        android:fontFamily="@font/poppinssembiold"
+        android:text="@string/belum_punya_akun"
         android:textSize="16sp"
-        android:text="@string/dont_have_account"
         app:layout_constraintEnd_toStartOf="@+id/tv_register"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -135,10 +140,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:alpha="0"
-        android:fontFamily="@font/opensansbold"
-        android:textSize="16sp"
+        android:fontFamily="@font/poppinsextrabold"
         android:text="@string/register"
         android:textColor="@color/red"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -151,10 +156,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

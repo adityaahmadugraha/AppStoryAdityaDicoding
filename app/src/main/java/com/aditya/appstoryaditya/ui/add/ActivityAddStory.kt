@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.api
+package com.aditya.appstoryaditya.ui.add
 
 import android.Manifest
 import android.content.Intent
@@ -151,7 +151,7 @@ class ActivityAddStory : AppCompatActivity() {
     ): Boolean {
         binding.apply {
             if (deskripsi.isEmpty()) {
-                return ilDescription.setInputError(getString(R.string.must_not_empty))
+                return ilDescription.setInputError(getString(R.string.tidak_boleh_kosong))
             }
 
             if (fotoKerusakan == null) {

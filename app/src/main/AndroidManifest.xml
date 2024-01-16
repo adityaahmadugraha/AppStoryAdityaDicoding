@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+
     <uses-feature android:name="android.hardware.camera" />
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -35,7 +36,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppStoryAditya">
         <activity
-            android:name=".api.ActivityAddStory"
+            android:name=".ui.add.ActivityAddStory"
             android:exported="false" />
 
         <meta-data
@@ -43,22 +44,11 @@
             android:value="AIzaSyDjY8D9gsxgJGLyvMMAT3cyO_0mcxkFqqs" />
 
         <activity
-            android:name=".ui.location.UserLocationActivity"
+            android:name=".ui.maps.UserLocationActivity"
             android:exported="false"
             android:label="@string/title_activity_user_location"
             android:parentActivityName=".ui.main.MainActivity" />
 
-        <receiver
-            android:name=".util.ImagesBannerWidget"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/image_banner_widget_info" />
-        </receiver>
 
         <activity
             android:name=".ui.detailstory.DetailActivity"
@@ -93,9 +83,6 @@
                 android:resource="@xml/file_path" />
         </provider>
 
-        <service
-            android:name=".util.StackWidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
     </application>
 
 </manifest>

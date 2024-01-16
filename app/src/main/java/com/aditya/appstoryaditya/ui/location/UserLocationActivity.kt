@@ -68,11 +68,11 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isCompassEnabled = true
         mMap.uiSettings.isMapToolbarEnabled = true
 
-        val sumbar = LatLng(-0.952730, 100.389315)
-        mMap.addMarker(
-            MarkerOptions().position(sumbar).title(getString(R.string.marker_in, "Sumbar"))
-        )
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sumbar))
+//        val sumbar = LatLng(-0.952730, 100.389315)
+//        mMap.addMarker(
+//            MarkerOptions().position(sumbar).title(getString(R.string.marker_in, "Sumbar"))
+//        )
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sumbar))
 
         showLoading()
         getMyLocation()
@@ -97,7 +97,6 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
             ) == PackageManager.PERMISSION_GRANTED
         ) {
             mMap.isMyLocationEnabled = true
-
         } else {
             requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
         }

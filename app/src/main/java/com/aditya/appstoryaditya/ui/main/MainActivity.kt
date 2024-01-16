@@ -12,9 +12,9 @@ import androidx.core.view.isVisible
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditya.appstoryaditya.R
-import com.aditya.appstoryaditya.api.ActivityAddStory
 import com.aditya.appstoryaditya.databinding.ActivityMainBinding
 import com.aditya.appstoryaditya.models.User
+import com.aditya.appstoryaditya.ui.add.ActivityAddStory
 import com.aditya.appstoryaditya.ui.detailstory.DetailActivity
 import com.aditya.appstoryaditya.ui.location.UserLocationActivity
 import com.aditya.appstoryaditya.ui.login.LoginActivity
@@ -135,6 +135,7 @@ class MainActivity : AppCompatActivity() {
                 putExtra("description", story.description)
                 putExtra("name", story.name)
                 putExtra("image", story.photoUrl)
+                putExtra("tanggal", story.createdAt)
             }
             startActivity(intent)
         }

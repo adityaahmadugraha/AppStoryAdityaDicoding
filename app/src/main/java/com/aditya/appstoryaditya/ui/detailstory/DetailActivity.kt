@@ -29,11 +29,18 @@ class DetailActivity : AppCompatActivity() {
         val description = intent.getStringExtra("description").toString()
         val name = intent.getStringExtra("name").toString()
         val image = intent.getStringExtra("image").toString()
+        val tanggal = intent.getStringExtra("tanggal").toString()
+
+
         val tvDeskripsi = binding.tvDescription
         tvDeskripsi.text = description
 
         val tvName = binding.tvTitle
         tvName.text = name
+
+        val tvTanggal = binding.tvTngal
+        tvTanggal.text = tanggal
+
         Glide.with(this)
             .load(image)
             .into(binding.imgStory)

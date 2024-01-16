@@ -27,9 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/opensanscondensedmedium"
+            android:fontFamily="@font/poppinsextrabold"
+            android:textSize="24sp"
             android:text="@string/register"
-            android:textSize="25sp"
             android:alpha="0"
             tools:alpha="1"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:alpha="0"
-            android:fontFamily="@font/opensanscondensedmedium"
+            android:fontFamily="@font/poppinssembiold"
             android:labelFor="@id/et_name"
             android:text="@string/name"
             app:layout_constraintStart_toStartOf="@+id/textView"
@@ -65,7 +65,8 @@
                 android:id="@+id/et_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/opensanscondensedmedium"
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_medium"
                 android:hint="@string/enter_name" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:alpha="0"
-            android:fontFamily="@font/opensanscondensedmedium"
+            android:fontFamily="@font/poppinssembiold"
             android:labelFor="@id/et_email"
             android:text="@string/email"
             app:layout_constraintStart_toStartOf="@+id/il_name"
@@ -98,7 +99,8 @@
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/opensanscondensedmedium"/>
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_medium"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -106,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/opensanscondensedmedium"
+            android:fontFamily="@font/poppinssembiold"
             android:labelFor="@id/et_password"
             android:text="@string/password"
             android:alpha="0"
@@ -130,7 +132,8 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/opensanscondensedmedium" />
+                android:textSize="12sp"
+                android:fontFamily="@font/poppins_medium" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -141,7 +144,7 @@
             android:layout_marginTop="24dp"
             android:alpha="0"
             android:backgroundTint="@color/dicoding"
-            android:fontFamily="@font/opensanscondensedmedium"
+            android:fontFamily="@font/poppinssembiold"
             android:text="@string/register"
             android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +157,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:alpha="0"
-            android:textSize="16sp"
+            android:textSize="14sp"
+            android:fontFamily="@font/poppinssembiold"
             android:text="@string/already_have_account"
             app:layout_constraintBottom_toBottomOf="@+id/tv_login"
             app:layout_constraintEnd_toStartOf="@+id/tv_login"
@@ -167,9 +171,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="0"
-            android:fontFamily="@font/opensansbold"
+            android:fontFamily="@font/poppinsextrabold"
             android:text="@string/login"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@color/red"
             app:layout_constraintBottom_toBottomOf="@+id/btn_register"
             app:layout_constraintEnd_toEndOf="@+id/il_password"

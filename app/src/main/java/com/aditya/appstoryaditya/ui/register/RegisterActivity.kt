@@ -3,12 +3,12 @@ package com.aditya.appstoryaditya.ui.register
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.animation.LinearInterpolator
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.view.isVisible
+import androidx.appcompat.app.AppCompatActivity
 import com.aditya.appstoryaditya.R
 import com.aditya.appstoryaditya.databinding.ActivityRegisterBinding
 import com.aditya.appstoryaditya.models.RegisterRequest
@@ -46,13 +46,10 @@ class RegisterActivity : AppCompatActivity() {
                 finish()
             }
 
-            imageView.contentDescription =
-                getString(R.string.image_description, getString(R.string.register))
         }
 
         playAnimation()
     }
-
 
 private fun registerUser(registerRequest: RegisterRequest) {
     viewModel.registerUser(registerRequest).observe(this@RegisterActivity) { response ->
@@ -84,12 +81,11 @@ private fun registerUser(registerRequest: RegisterRequest) {
     }
 }
 
-
     private fun validateInput(name: String): Boolean {
         binding.apply {
             if (name.isEmpty()) {
                 ilName.isErrorEnabled = true
-                ilName.error = getString(R.string.must_not_empty)
+                ilName.error = getString(R.string.tidak_boleh_kosong)
                 return false
             }
             if (isError) {
@@ -98,8 +94,6 @@ private fun registerUser(registerRequest: RegisterRequest) {
             return true
         }
     }
-
-
 
     private fun playAnimation() {
         binding.apply {
@@ -113,32 +107,56 @@ private fun registerUser(registerRequest: RegisterRequest) {
                 repeatMode = ObjectAnimator.REVERSE
             }.start()
 
-            val login = ObjectAnimator.ofFloat(textView, View.ALPHA, 1f).setDuration(200)
-            val nameLable = ObjectAnimator.ofFloat(textView5, View.ALPHA, 1f).setDuration(150)
-            val etName = ObjectAnimator.ofFloat(ilName, View.ALPHA, 1f).setDuration(150)
-            val emailLable = ObjectAnimator.ofFloat(textView2, View.ALPHA, 1f).setDuration(150)
-            val etEmail = ObjectAnimator.ofFloat(ilEmail, View.ALPHA, 1f).setDuration(150)
-            val passwordLable = ObjectAnimator.ofFloat(textView3, View.ALPHA, 1f).setDuration(150)
-            val etPassword = ObjectAnimator.ofFloat(ilPassword, View.ALPHA, 1f).setDuration(150)
-            val btnRegister = ObjectAnimator.ofFloat(btnRegister, View.ALPHA, 1f).setDuration(150)
-            val dontHaveAccount = ObjectAnimator.ofFloat(textView4, View.ALPHA, 1f).setDuration(150)
-            val registerLabel = ObjectAnimator.ofFloat(tvLogin, View.ALPHA, 1f).setDuration(150)
 
-            AnimatorSet().apply {
-                playSequentially(
+
+            val rotateDuration = 500L
+            val fadeInDuration = 150L
+
+
+            val login = ObjectAnimator.ofFloat(textView, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+            val nameLabelFadeIn = ObjectAnimator.ofFloat(textView5, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+            val etNameFadeIn = ObjectAnimator.ofFloat(ilName, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+            val emailLabelFadeIn = ObjectAnimator.ofFloat(textView2, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+            val etEmailFadeIn = ObjectAnimator.ofFloat(ilEmail, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+            val passwordLabelFadeIn = ObjectAnimator.ofFloat(textView3, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+            val etPasswordFadeIn = ObjectAnimator.ofFloat(ilPassword, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+            val btnRegisterFadeIn = ObjectAnimator.ofFloat(btnRegister, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+            val dontHaveAccountFadeIn = ObjectAnimator.ofFloat(textView4, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+            val registerLabelFadeIn = ObjectAnimator.ofFloat(tvLogin, View.ALPHA, 0f, 1f).setDuration(fadeInDuration)
+
+            val rotateAnimator = ObjectAnimator.ofFloat(btnRegister, View.ROTATION, 0f, 360f).setDuration(rotateDuration)
+
+            val linearInterpolator = LinearInterpolator()
+            login.interpolator = linearInterpolator
+            nameLabelFadeIn.interpolator = linearInterpolator
+            etNameFadeIn.interpolator = linearInterpolator
+            emailLabelFadeIn.interpolator = linearInterpolator
+            etEmailFadeIn.interpolator = linearInterpolator
+            passwordLabelFadeIn.interpolator = linearInterpolator
+            etPasswordFadeIn.interpolator = linearInterpolator
+            dontHaveAccountFadeIn.interpolator = linearInterpolator
+            registerLabelFadeIn.interpolator = linearInterpolator
+
+
+            val animatorSet = AnimatorSet().apply {
+                playTogether(
                     login,
-                    nameLable,
-                    etName,
-                    emailLable,
-                    etEmail,
-                    passwordLable,
-                    etPassword,
-                    btnRegister,
-                    dontHaveAccount,
-                    registerLabel
+                    nameLabelFadeIn,
+                    etNameFadeIn,
+                    emailLabelFadeIn,
+                    etEmailFadeIn,
+                    passwordLabelFadeIn,
+                    etPasswordFadeIn,
+                    btnRegisterFadeIn,
+                    dontHaveAccountFadeIn,
+                    registerLabelFadeIn,
+                    rotateAnimator
                 )
-                start()
             }
+
+            animatorSet.start()
+
+
         }
     }
 
