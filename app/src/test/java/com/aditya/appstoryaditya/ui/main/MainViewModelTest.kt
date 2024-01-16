@@ -2,7 +2,6 @@ package com.aditya.appstoryaditya.ui.main
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.paging.AsyncPagingDataDiffer
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
@@ -20,7 +19,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -53,21 +51,16 @@ class MainViewModelTest {
     @OptIn(ExperimentalPagingApi::class)
     @Test
     fun `when Get Stories Should Not Null and Return Data`() = runTest {
-        // Prepare dummy data
         val dummyStory = DataDummy.generateDummyStoryResponse()
-        val data: PagingData<Story> = PagingData.from(dummyStory)
+        val data: PagingData<Story> = QuotePagingSource.snapshot(dummyStory)
         val expectedStory = flow { emit(data) }
 
-        // Mock repository response
         Mockito.`when`(quoteRepository.getAllStories(token = String())).thenReturn(expectedStory)
 
-        // Create MainViewModel
         val mainViewModel = MainViewModel(quoteRepository, userPreference, repository)
 
-        // Observe the data
         val actualStory: PagingData<Story> = mainViewModel.quote.first()
 
-        // Assert the results
         val differ = AsyncPagingDataDiffer(
             diffCallback = MainAdapter.DIFF_CALLBACK,
             updateCallback = noopListUpdateCallback,
@@ -80,12 +73,30 @@ class MainViewModelTest {
         assertEquals(dummyStory[0], differ.snapshot()[0])
     }
 
+    @OptIn(ExperimentalPagingApi::class)
+    @Test
+    fun `when Get Stories Empty Should Return No Data`() = runTest {
+        val data: PagingData<Story> = PagingData.from(emptyList())
+        val expectedStory = flow { emit(data) }
+
+        Mockito.`when`(quoteRepository.getAllStories(token = String())).thenReturn(expectedStory)
+
+        val mainViewModel = MainViewModel(quoteRepository, userPreference, repository)
+
+
+        val actualStory: PagingData<Story> = mainViewModel.quote.first()
+
+        val differ = AsyncPagingDataDiffer(
+            diffCallback = MainAdapter.DIFF_CALLBACK,
+            updateCallback = noopListUpdateCallback,
+            workerDispatcher = Dispatchers.Main,
+        )
+        differ.submitData(actualStory)
+
+        assertEquals(0, differ.snapshot().size)
+    }
 
 }
-
-
-
-
 
 class QuotePagingSource : PagingSource<Int, LiveData<List<Story>>>() {
     companion object {
