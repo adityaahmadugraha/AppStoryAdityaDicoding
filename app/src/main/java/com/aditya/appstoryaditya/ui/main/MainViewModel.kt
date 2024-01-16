@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.models.User
 import com.aditya.appstoryaditya.models.UserPreference
 import com.aditya.appstoryaditya.repository.AppRepository
 import com.aditya.appstoryaditya.repository.RemoteDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -22,6 +24,10 @@ class MainViewModel @Inject constructor(
     private val repository: AppRepository
 ) : ViewModel() {
 
+
+    @OptIn(ExperimentalPagingApi::class)
+    val quote: Flow<PagingData<Story>> =
+        remoteDataSource.getAllStories(token = String()).cachedIn(viewModelScope)
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
