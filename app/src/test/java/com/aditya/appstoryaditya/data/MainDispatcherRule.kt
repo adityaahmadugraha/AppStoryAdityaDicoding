@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.utils
+package com.aditya.appstoryaditya.data
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -1,4 +1,4 @@
-package com.aditya.appstoryaditya.utils
+package com.aditya.appstoryaditya.data
 
 import com.aditya.appstoryaditya.models.Story
 

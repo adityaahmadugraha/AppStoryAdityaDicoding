@@ -44,7 +44,7 @@
             android:value="AIzaSyDjY8D9gsxgJGLyvMMAT3cyO_0mcxkFqqs" />
 
         <activity
-            android:name=".ui.maps.UserLocationActivity"
+            android:name=".ui.location.UserLocationActivity"
             android:exported="false"
             android:label="@string/title_activity_user_location"
             android:parentActivityName=".ui.main.MainActivity" />

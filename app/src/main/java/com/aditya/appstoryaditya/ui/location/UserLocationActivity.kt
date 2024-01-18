@@ -49,8 +49,6 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        supportActionBar?.title = "Back"
-
     }
 
     private fun showLoading() {
@@ -68,11 +66,6 @@ class UserLocationActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isCompassEnabled = true
         mMap.uiSettings.isMapToolbarEnabled = true
 
-//        val sumbar = LatLng(-0.952730, 100.389315)
-//        mMap.addMarker(
-//            MarkerOptions().position(sumbar).title(getString(R.string.marker_in, "Sumbar"))
-//        )
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sumbar))
 
         showLoading()
         getMyLocation()

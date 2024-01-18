@@ -12,8 +12,8 @@ import com.aditya.appstoryaditya.models.Story
 import com.aditya.appstoryaditya.models.UserPreference
 import com.aditya.appstoryaditya.repository.AppRepository
 import com.aditya.appstoryaditya.repository.RemoteDataSource
-import com.aditya.appstoryaditya.utils.DataDummy
-import com.aditya.appstoryaditya.utils.MainDispatcherRule
+import com.aditya.appstoryaditya.data.DataDummy
+import com.aditya.appstoryaditya.data.MainDispatcherRule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
